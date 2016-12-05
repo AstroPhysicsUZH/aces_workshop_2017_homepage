@@ -2,11 +2,8 @@
 <div id="wrapper">
 
 <header>
-  <h1>11th International LISA Symposium</h1>
-  <h2>
-    5. &ndash; 9. September 2016<br>
-    Irchel Campus, University of Zurich, Switzerland
-  </h2>
+  <h1><?=$confTitle?></h1>
+  <h2><?=$confSubTitle?></h2>
 </header>
 
 <?php print_menu($page); ?>

@@ -18,7 +18,7 @@
 </ul>
 
 <h2>Important Dates (CEST)</h2>
-<?php require "items/important_dates.php"; ?>
+<?php # require "items/important_dates.php"; ?>
 
 <h2>News</h2>
-<?php require "items/news.php"; ?>
+<?php # require "items/news.php"; ?>

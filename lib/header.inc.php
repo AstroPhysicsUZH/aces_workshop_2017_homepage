@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>LISA Symposium Meeting; 5. -- 9. Sept. 2016; University of Zurich</title>
+  <title><?=$confShortTitle?></title>
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">

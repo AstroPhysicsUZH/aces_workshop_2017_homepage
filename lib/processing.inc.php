@@ -32,14 +32,10 @@ if ($DEBUG) {
 // calculate if we still get early/reduced price
 $now = new DateTime('NOW');
 
-if ($now > $registrationOpens && $now < $registrationCloses) {
-    $isBookingOpen = TRUE;
-}
-else {$isBookingOpen = FALSE;}
-
-$isItEarly = $now < $reducedLimitDate;
-$isItTooEarly = $now < $registrationOpens;
-$isItTooLate  = $now > $registrationCloses;
+$isBookingOpen = $now > $dateRegistrationOpens && $now < $dateRegistrationDeadline;
+$isItEarly     = $now < $dateReducedFeeDeadline;
+$isItTooEarly  = $now < $dateRegistrationOpens;
+$isItTooLate   = $now > $dateRegistrationDeadline;
 
 
 $feeStudent = $isItEarly ? $feeReducedStudent : $feeFullStudent;

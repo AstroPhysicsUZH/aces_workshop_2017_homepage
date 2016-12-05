@@ -6,11 +6,11 @@
 $DEBUG = TRUE;
 
 $confTitle = "ACES Workshop";
-$confShortTitle = "ACES Workshop";
+$confShortTitle = "ACES Workshop Zurich 2017 ";
 
 $confLocation = "Irchel Campus, University Zurich, Switzerland";
 $confDatetime = "June 29 &ndash; 30, 2017";
-$confSubTitle = $confLocation . " &mdash; " . $confDatetime;
+$confSubTitle = $confLocation . " <br /> " . $confDatetime;
 
 // Set default timezone
 date_default_timezone_set('UTC');
@@ -75,15 +75,15 @@ $feeDinnerStudent  = 100; // the price of the dinner, per person
 $feeDinnerRegular  = 100; // the price of the dinner, per person
 
 
-$registrationOpens          = new DateTime("2016-03-01 00:00:00"); // the date when early booking is over
-$reducedFeeDeadline         = new DateTime("2016-07-31 23:59:59"); // the date when early booking is over
-$abstractSubmissionDeadline = new DateTime("2016-07-15 23:59:59");
-$registrationDeadline       = new DateTime("2016-08-29 12:00:00"); // the date when booking is over
+$dateRegistrationOpens          = new DateTime("2016-03-01 00:00:00"); // the date when early booking is over
+$dateReducedFeeDeadline         = new DateTime("2016-07-31 23:59:59"); // the date when early booking is over
+$dateAbstractSubmissionDeadline = new DateTime("2016-07-15 23:59:59");
+$dateRegistrationDeadline       = new DateTime("2016-08-29 12:00:00"); // the date when booking is over
 
-$conferenceStartDay     = new DateTime("2016-09-05 00:00:00");
-$conferenceEndDay       = new DateTime("2016-09-09 23:59:59");
+$dateConferenceStarts  = new DateTime("2016-09-05 00:00:00");
+$dateConferenceEnds    = new DateTime("2016-09-09 23:59:59");
 
-$conferenceDinnerDate   = new DateTime("2016-09-07 19:00:00");
+$dateConferenceDinner  = new DateTime("2016-09-07 19:00:00");
 
 
 
@@ -107,6 +107,7 @@ $sessionsTable = "sessionsTable";
 
 
 $UPLOADS_DIR = "uploads";
+$pages_dir = "pages";
 
 // Which fields do you want to have in the database?
 // database table columns with key => [SQL_DATATYPE, meaning]

@@ -1,0 +1,392 @@
+
+body,
+html {
+    margin:0;
+    padding:0;
+    color:#000;
+    background:#fff;
+    font-family: sans-serif;
+}
+body {
+    margin: 0 1em;
+}
+
+#wrap {
+    max-width:1200px;
+    margin:0 auto;
+    background:#fff;
+}
+
+header {
+    position: relative;
+    background:#fff;
+}
+
+nav {
+    float: left;
+    width: 150px;
+    padding-bottom: 1em;
+    background:#fff;
+}
+
+.menu {
+    display: inline-block;
+    margin: 0.125em 0.25em;
+    padding: 0.5em;
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 0.25em;
+    background-color: #ddd;
+    transition: background-color 0.3s;
+}
+.menu.act {
+    background-color: #ffa;
+}
+
+.menu:link,
+.menu:visited {
+    color: black;
+    text-decoration: none;
+}
+.menu:hover {
+    background-color: #ffa
+}
+.pagemenu {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.pagemenu li {
+    display: inline-block;
+    background-color: #ffa;
+    margin: 0em;
+    padding: 0.25em;
+    border: 1px solid black;
+    border-radius: 0.5em;
+}
+.pagemenu li a:link,
+.pagemenu li a:visited {
+    color: black;
+    text-decoration: none;
+}
+.pagemenu li a:before {
+    content: "\2197  ";
+}
+
+
+#main {
+    display: block;
+    min-height: 300px;
+    margin-left: 200px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background:#ddd;
+}
+footer {
+    clear: both;
+    position: relative;
+    margin-top: 3em;
+    padding-top: 5px;
+    background:#fff;
+    border-top: 1px solid black;
+    text-align: right;
+    vertical-align: middle;
+}
+footer>p {
+    margin-top: 0px;
+    padding: 0.5em;
+}
+
+h3.presentation {
+    padding-top:2em;
+    padding-bottom: 0.5em;
+    margin-bottom:0.5em;
+    border-bottom: 1px solid black;
+}
+p.summary {
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 0.5em;
+    margin-bottom:0.5em;
+    border-bottom: 1px dotted black;
+
+}
+
+
+table {
+    border-collapse: collapse;
+}
+.line_bot td,
+.line_bot th {
+    border-bottom: 1px solid black;
+}
+.line_bot {
+    background-color: #ffff;
+    transition: background-color 0.3s;
+}
+.line_bot:hover{
+    background-color:#ffa;
+}
+
+td {
+    padding: 0 0.25em 0 0.25em;
+}
+
+td.center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+td.right {
+    text-align: right;
+    vertical-align: middle;
+}
+
+table form {
+    margin: 0;
+}
+
+.warn {
+    background-color:#f66 !important;
+    box-shadow: 5px 5px 0px #883333 !important;
+}
+.save {
+    background-color:#9f9 !important;
+    box-shadow: 5px 5px 0px #383 !important;
+}
+
+.bottomborder {
+    border-bottom: 1px solid black;
+}
+.topborder {
+    margin-top: 0.5em;
+    border-top: 1px solid black;
+    padding-top: 0.5em;
+}
+
+input,
+input[type=button],
+input[type=submit],
+input[type=text],
+input[type=password],
+select,
+textarea {
+    background-color:#ffa;
+    margin: 1em 0.5em;
+    padding: 0.5em;
+    border: 1px solid #660;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 0px #888833;
+}
+
+input.short {
+    width: 8em;
+}
+
+table.edit th {
+    text-align: left;
+}
+table.edit label {
+    display: inline-block;
+    vertical-align: middle;
+    height: 2em;
+}
+table.edit input[type=text] ,
+table.edit input[type=email],
+table.edit input[type=number],
+table.edit textarea {
+    font-family: monospace;
+    font-size: 14px;
+    width: 35em;
+    height: 2em;
+}
+table.edit textarea {
+    height: 10em;
+}
+table.edit input.left {
+    float: right;
+    clear:both;
+}
+
+.inputarea {
+    border: 1px dotted black;
+    border-radius: 10px;
+	text-align: center;
+    background-color: white;
+    vertical-align: middle;
+}
+
+.inputarea .half {
+    display:inline-block;
+    width:48%;
+    vertical-align: middle;
+}
+
+.inputarea label {
+    display: inline-block;
+}
+
+/*
+.loggedinbox:before {
+	content: attr(name);
+	background-color: #FFF;
+	position: relative;
+	top: -0.8em;
+	left: 0.5em;
+	padding: 0px 0.5em 0px 0.5em;
+}
+*/
+
+.loggedinbox {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+	border: 1px solid black;
+    border-radius: 5px;
+	margin: 0.5em;
+	padding: 0.5em;
+}
+.loggedinbox p {
+    margin: 0px;
+    padding: 0 1em;
+}
+
+.log {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    text-align: left;
+}
+.log dl {
+    margin: 0px;
+    font-size: 0.75em;
+    font-family: monospace;
+}
+.log dt {
+    float: left;
+    clear: left;
+    width: 6em;
+    text-align: right;
+}
+.log dd {
+    margin-left: 6em;
+    padding-left: 1em;
+}
+
+.warn_bg {
+    background-color: #ffaaaa;
+}
+
+
+.tc_mysession {
+    background-color: #ffaaaa !important;
+}
+.tc_othersession {
+    background-color: #ffffaa !important;
+}
+
+
+/*
+
+.error { border: 2px solid red; }
+
+row { display: block; }
+
+.controlbox:before {
+	content: attr(name);
+	background-color: #FFF;
+	position: relative;
+	top: -0.8em;
+	left: 0.5em;
+	padding: 0px 0.5em 0px 0.5em; }
+
+.controlbox {
+	border: 1px solid black;
+	margin: 1em;
+	margin-top: 0px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	margin-right: auto; }
+
+div, table, tr, td { margin: 0px; padding: 0px; }
+td { vertical-align: top; }
+
+input[type=button], input[type=submit] { position: relative; float: right; top: -1.7em; }
+
+.notice { font-style: italic; font-variant: small-caps; }
+
+a { text-decoration: none; }
+*/
+
+
+@media print {
+
+    .loggedinbox {
+        display: none;
+    }
+    h1, h2 {
+        display: inline-block;
+        margin: 0px;
+        padding: 0 0 0.25em 0;
+    }
+    nav {
+        float: none;
+        width: auto;
+        margin-bottom: 1em;
+        border-bottom: 3px solid black;
+        padding-bottom: 0.5em;
+    }
+    nav .menu {
+        display: none;
+        margin: 0;
+        padding: 0;
+    }
+    nav .menu.act {
+        display:block;
+        width: 100%;
+        border: none;
+        background-color: transparent;
+    }
+    nav .menu.act:before {
+        content: "menu > ";
+    }
+
+    #main {
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        border: none;
+    }
+
+    .inputarea {
+        font-size: 8pt;
+    }
+
+    input,
+    input[type=button],
+    input[type=submit],
+    input[type=text],
+    input[type=password],
+    select {
+        font-size: 8pt;
+        background-color:transparent !important;
+        margin: 0.25em 0em;
+        padding: 0.125em;
+        border: 1px solid black !important;
+        border-radius: 5px;
+        box-sizing: border-box;
+        box-shadow: none !important;
+    }
+
+    footer {
+        border-top-width: 2px;
+    }
+
+    footer .log {
+        display: none;
+    }
+
+}

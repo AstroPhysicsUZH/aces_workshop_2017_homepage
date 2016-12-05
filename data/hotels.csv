@@ -1,0 +1,10 @@
+show,name,street,loc,url,email,tel,img,name1,rates1,nr1,name2,rates2,nr2,deadline,breakfast,wifi,aircon,comment,gmaps,distance
+Y,Hotel Rex,Weinbergstrasse 92,CH-8006 Zürich,http://www.hotelrex.ch,info@hotelrex.ch,+41 44 360 25 25,rex.jpg,Single,137.5,10,,,,2016-08-04,Y,Y,,,,
+Y,Hotel Coronado,Schaffhauserstrasse 137,CH-8037 Zürich,http://www.hotel-coronado.ch,coronado@welcomehotels.ch,+41 44 360 26 26,coronado.jpg,Single,127.50 / 157.50,22,Double,157.50 / 202.50,22,2016-07-31,Y,Y,,,,
+,Hotel St. Josef,Hirschengraben 64,CH-8001 Zürich,http://www.st-josef.ch,nfo@st-josef.ch,+41 44 250 57 57,stjosef.jpg,,,,,,,,,,,,,
+Y,Hotel Sunnehus,Sonneggstrasse 17,CH-8006 Zürich,http://www.hotelsunnehus.ch,info@hotelsunnehus.ch,+41 44 250 27 27,sunnehus.jpg,Single,145.00 / 169.50,10,,,,2016-08-16,Y,Y,,,,
+Y,Hotel Bristol,Stampfenbachstrasse 34,CH-8006 Zürich,http://www.hotelbristol.ch,info@hotelbristol.ch,+41 44 258 44 44,bristol.jpg,Single,126.50 / 157.50,8,Double,150.50 / 187.50,8,2016-08-03,Y,Y,N,,,
+Y,Hotel Sternen Oerlikon,Schaffhauserstrasse 335,CH-8050 Zürich,http://www.sternenoerlikon.ch,info@sternenoerlikon.ch,+41 43 300 65 65,SternenOerlikon.jpg,Single,165.5,12,,,,2016-07-21,Y,Y,,,,
+Y,Hotel Leoneck,Leonhardstrasse 1,CH-8001 Zürich,http://www.leoneck.ch,m.knezevic@leoneck.ch,+41 44 254 22 22,leoneck.jpg,Classic Double (single use),155,10,Deluxe Double (single use),170,10,2016-08-08,Y,Y,Y,,,
+Y,Hotel Rigihof,Universitätstrasse 101,CH-8006 Zürich,https://www.leonardo-hotels.de,info.zurich@leonardo-hotels.com,+41 44 360 12 00,rigihof.jpg,Single,185,20,Double,205,15,2016-06-03,,Y,,,,
+Y,Hotel Krone Unterstrass,Schaffhauserstrasse 1,CH-8006 Zürich,http://www.hotel-krone.ch,info@hotel-krone.ch,+41 44 360 56 56,krone.jpg,Single Basic,175.5,4,Single Classic,195.5,7,2016-07-29,Y,Y,Y,,,

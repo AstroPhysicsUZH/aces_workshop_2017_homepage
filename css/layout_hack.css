@@ -1,0 +1,673 @@
+
+html {
+    overflow-y: scroll;
+}
+
+#wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    text-align: left;
+    background-color: #00002F;
+    color: white;
+    background-image: url("../img/header_website.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: auto 100%;
+}
+
+header h1 {
+    margin: 0;
+    padding: 0.5em 0.5em 0.25em 0.5em;
+}
+
+header h2 {
+    margin: 0;
+    padding: 0.25em 0.5em 0.5em 0.5em;
+}
+
+nav ul {
+    padding: 0;
+}
+
+nav ul li {
+    display: box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    list-style-position: outside;
+}
+
+nav li+li {
+    border-top: 1px dotted #000000;
+}
+
+
+nav ul li a {
+    display: block;
+    padding: 0.5em 0.5em 0.5em 1.5em;
+}
+
+
+nav ul li.active a {
+    color: #87072B !important;
+    font-weight: bold;
+    padding-left: 1.5em;
+
+}
+
+nav li.not_implemented a {
+    color: gray !important;
+    pointer-events: none;
+    cursor: default;
+}
+
+nav ul li a,
+nav ul li a:link,
+nav ul li a:visited,
+nav ul li a:hover,
+nav ul li a:active {
+    color: black;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.bigtopspace {
+    padding-top: 2em;
+}
+.menuaddition {
+    font-size: 0.8em;
+    padding-left: 1.5em;
+}
+
+
+.deactivated,
+.deactivated:link,
+.deactivated:visited,
+.deactivated:hover,
+.deactivated:active {
+    font-style: italic;
+    color: #888 !important;
+}
+
+main
+{
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 2em 0 5em 0;
+    background-color: #fff;
+}
+
+main article
+{
+    margin: 1.5em 1em 0.5em 1em;
+/*    background-color: #f0eaaa;*/
+}
+
+article h1 {
+    border-bottom: 1px solid black;
+    font-size: 1.8em;
+}
+
+article h2 {
+    margin: 2em 0 0.5em 0;
+    border-bottom: 1px dotted black;
+    font-size: 1.2em;
+}
+
+article h3 {
+    margin: 1em 0 0.25em 0;
+    font-size: 1.0em;
+}
+
+article h4 {
+    margin: 0.5em 0 0.2em 0;
+    font-size: 1.0em;
+}
+
+article p,
+article ul {
+    margin-top: 0.25em;
+    margin-bottom: 0.75em;
+}
+
+article ul {
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0 0 0 2em;
+}
+
+
+img,
+iframe,
+.warning,
+.notice,
+.bordered {
+    border: 1px solid #666;
+    border-radius: 0.5em;
+}
+
+.warning {
+    margin: 0.5em 2em;
+    padding: 0.5em;
+    border: 2px solid red;
+    background-color: #f99;
+}
+.notice {
+    margin: 0.5em 2em;
+    padding: 0.5em;
+    border: 2px solid green;
+    background-color: #afa;
+}
+.centered {
+    text-align: center;
+}
+
+.small {
+    display: inline-block;
+    font-size: 80%;
+}
+
+.orgatime {
+    display: block;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    font-size: 80%;
+    font-style: italic;
+}
+.orgas {
+    margin: 0;
+}
+.orgalist {
+    margin-top: 0;
+    margin-bottom: 1.5em;
+}
+
+
+.datetime {
+    min-width: 16ch;
+}
+.date {
+    min-width: 11ch;
+}
+
+code {
+    display: inline-block;
+    font-family: monospace;
+    margin-left: 2em;
+    border-left: 2px solid black;
+    padding-left: 1em;
+}
+
+.nolink,
+.nolink:link,
+.nolink:visited,
+.nolink:hover,
+.nolink:active {
+    color: black;
+    text-decoration: none;
+}
+
+footer {
+    clear: both;
+    display: block;
+    padding: 0.5em 2em 0.5em 0.5em;
+
+    background-color: #00002F;
+    color: white;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+footer img {
+    border: none;
+    height: 50px;
+}
+
+footer img.left {
+  float: left;
+}
+
+
+/******************************************************************************
+    Page specific adjustments
+******************************************************************************/
+
+/* Transportation page */
+
+.zvvlinie {
+    display: inline-block;
+    width: 2em;
+    padding: 0.1em 0.2em;
+    border: 1px solid black;
+    border-radius: 3px;
+
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.zvvstation {
+    display: inline-block;
+    margin: 0.2em 0;
+    padding: 0 0.5em;
+    border-radius: 0px;
+
+    color: white;
+    background: #00c;
+    font-weight: bold;
+}
+
+.l7 {
+    background-color: #000;
+    color: white;
+}
+
+.l9 {
+    background-color: #11296F;
+    border-color: #11296F;
+    color: white;
+}
+.l10 {
+    background-color: #E12472;
+    border-color: #E12472;
+    color: white;
+}
+
+.l14 {
+    background-color: #008dc5;
+    border-color: #008dc5;
+    color: white;
+}
+.l69 {
+    background-color: #fff;
+    color: black;
+}
+.l33 {
+    background-color: rgb(218, 214, 156);
+    border-color: rgb(218, 214, 156);
+    color: black;
+}
+.l72 {
+    background-color: #C6A693;
+    border-color: #C6A693;
+    color: black;
+}
+.ic {
+    background-color: #E00000;
+    border-color: #E00000;
+    color: white;
+}
+.sb {
+    background-color: white;
+    color: black;
+}
+
+
+
+/* Accomodation page */
+
+div.hotel {
+    display: inline-block;
+    width: 45%;
+    min-width: 220px;
+    margin: 0 0.5em 0.5em 0;
+    padding: 0.5em;
+
+    vertical-align: text-top;
+    background-color: #fff;
+}
+
+div.hotel img {
+    width: 100%;
+}
+
+div.hotel img.ico {
+    width: 40px;
+    border: none;
+    position: absolute;
+    bottom: -5px;
+}
+div.hotel img.ico.x1 { right: -5px; }
+div.hotel img.ico.x2 { right: 40px; }
+div.hotel img.ico.x3 { right: 85px; }
+
+
+div.hotel a,
+div.hotel div,
+div.hotel h3 {
+    display: block;
+    position: relative;
+    clear: both;
+}
+
+div.hotel h3 {
+    margin: 0.5em 0 0 0;
+}
+
+div.hotel a,
+div.hotel a:visited {
+    color: black;
+    text-decoration: none;
+}
+div.hotel a:hover {
+    color: #00E;
+    text-decoration: underline;
+    transition: 0.5s;
+}
+
+div.hotel .linebot {
+    border-bottom: 1px dotted #888;
+}
+div.hotel .linetop {
+    border-top: 1px dotted #888;
+}
+
+div.hotel .rightib {
+    display: inline-block;
+    float: right;
+}
+
+
+
+/* programm calendar adjustments */
+.fc-content {
+    padding: 0px 3px;
+}
+
+
+/* registartion form */
+
+form {
+/*  width: 30em;
+  padding-top: 3em;
+  */position: relative;
+}
+
+table.registration {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th > h2 {
+  text-align: left;
+}
+table.registration td {
+  text-align: right;
+  padding: 0.25em 0.25em 0.25em 0;
+}
+table.registration td+td {
+  text-align: left;
+  padding-left: 0.25em;
+}
+
+input,
+textarea {
+  color: #000;
+  background-color: #fffbf0;
+  border: 1px solid black;
+}
+
+input[type=text],
+input[type=email],
+textarea {
+    width: 85%;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    color: #000;
+    background-color: #fffbf0;
+    border: 1px solid black;
+}
+
+input[type=submit] {
+    width: 100%;
+    height: 3em;
+    margin-top: 2em;
+    background-color: lightgreen;
+}
+
+input:required + span::after,
+textarea:required + span::after {
+  content: "★";
+  color: red;
+}
+
+input:required:valid + span::after,
+textarea:required:valid + span::after {
+  content: "✔";
+  color: green;
+}
+
+#price {
+  font-weight: bold;
+  border: 0px solid black;
+  background-color: #ffaaaa;
+}
+
+#tr_price {
+  background-color: #ffaaaa;
+  border: 1px solid red;
+}
+
+
+ul.speakers {
+
+}
+
+ul.speakers li.speaker_topic {
+    margin-bottom: 0.5em;
+    border-bottom: 1px dotted black;
+    padding-bottom: 0.5em;
+}
+ul.speakers li.speaker_topic:last-child {
+    border-bottom: none;
+}
+
+ul.speakers span.speaker {
+
+}
+
+ul.speakers span.affiliation {
+    font-size: 80%;
+    font-style: italic;
+}
+
+ul.speakers a.title {
+    font-weight: bold;
+    display: block;
+}
+
+ul.speakers a.title.linked {
+    color: #008;
+}
+
+ul.speakers a.title.linked:hover {
+    color: #00f;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+ul.speakers div.modal_abstract {
+    clear:both;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    /* z-index: 1; /* Sit on top */
+    /* padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.66); /* Black w/ opacity */
+}
+
+ul.speakers div.modal_abstract .container {
+    position: fixed;
+    transform: translate(0, -50%);
+    top: 50%;
+    right: 5%;
+    left: 5%;
+
+    width: auto;
+    max-height: 80%;
+
+    margin: 0;
+    padding: 20px;
+
+    border: 1px solid #888;
+    border-radius: 1em;
+
+    background-color: #fefefe;
+    overflow: auto;
+}
+
+ul.speakers div.modal_abstract .close {
+    color: #ffaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+ul.speakers div.modal_abstract .close:hover,
+ul.speakers div.modal_abstract .close:focus {
+    color: #ff3333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul.speakers .mod_name {
+    display: block;
+}
+ul.speakers .mod_aff {
+    display: block;
+    font-size: 75%;
+    font-style: italic;
+}
+ul.speakers .mod_title {
+    display: block;
+    font-weight: bold;
+    padding: 0.5em 0 1em 0;
+}
+
+
+
+
+.fullprog .authortitle {
+    display: block;
+    margin-left: 2em;
+}
+
+.fullprog .time {
+    font-size: 80%;
+    color: #888;
+}
+
+.fullprog .title {
+    font-style: italic;
+}
+
+.fullprog .notalk {
+    color: #888;
+}
+
+.fullprog ul {
+    list-style-type: none;
+}
+
+
+.bookedout {
+    position: relative;
+    top: 3em;
+    font-size: 50px;
+    color: red;
+    font-weight: bold;
+    transform: rotate(-30deg);
+    left: 3em;
+    text-align: left;
+    height: 5px;
+}
+
+ul.prog {
+    padding-left: 0;
+}
+
+ul.prog li {
+    display: table-row;
+}
+
+.time {
+    display: table-cell;
+    width: 7em;
+    font-size: 80%;
+    color: #888;
+}
+.data {
+    display: table-cell;
+}
+
+.notalk {
+    display: table-cell;
+    color: #888;
+}
+
+.title {
+    font-style: italic;
+}
+
+
+.prog ul {
+    list-style-type: none;
+}
+
+h4.chair {
+    margin: 0;
+    padding: 1em 0 0 1em;
+    font-size: 100%;
+    text-align: center;
+}
+
+
+
+
+
+
+@media only screen and (min-width:600px) {
+
+    body {
+        margin: 1em;
+    }
+
+    nav,
+    main {
+        float:left;
+    }
+    nav {
+        width: 30%;
+    }
+    main {
+        width: 70%;
+        min-height: 20em; /* make it bitter than the menu */
+    }
+
+    ul.speakers div.modal_abstract .container {
+        left: auto;
+        right: 10%;
+
+        width: 40%;
+    }
+
+}

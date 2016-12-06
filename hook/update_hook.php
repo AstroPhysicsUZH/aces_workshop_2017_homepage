@@ -49,7 +49,7 @@ if (!$SAFE) {
 # https://gist.github.com/milo/daed6e958ea534e4eba3
 
 #$hookSecret = 'XXXXXXX';  # set NULL to disable check
-include "secret.php" # set in secrets.php
+include "secret.php"; # set in secrets.php
 
 # for debug, disable check for my home machine
 if ($_SERVER['REMOTE_ADDR']==='212.51.156.200'){

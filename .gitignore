@@ -1,6 +1,0 @@
-*.directory
-.kateproject.d
-*.xcf
-bower_components
-
-img/src/sig*

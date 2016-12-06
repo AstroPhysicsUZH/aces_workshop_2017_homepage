@@ -1,7 +1,0 @@
-<?php
-
-$youtube_recordings = [
-];
-
-
-?>

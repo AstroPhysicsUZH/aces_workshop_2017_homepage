@@ -1,18 +1,14 @@
 
+<h1>Hotels</h1>
+
 <p>
   We recommend the following hotels.<br>
   For more choice consult <a href="https://www.zuerich.com/en/visit/accommodation-hotel-bed-and-breakfast-hostel"> the webpage of Zurich tourism</a>.
-  <br>
-  To profit from the reservations and the special prices printed below, please use the keyword <b>LISA Conference 2016</b> while booking and book before the deadline.
-  Rates are in CHF and include city tax.
-  If two rates are given, then the first is the weekend price, the second for during the week.
-  The number in brackets after the room type show the total of available rooms
-  (Not the number of free rooms left).
 </p>
 
 <p class="warning">
   Please make sure to book <b>way in advance</b>.<br>
-  September is a crowded time in Zurich and Hotels are likely to book out very early.
+  Hotels are likely to book out very early.
 </p>
 
 
@@ -65,7 +61,7 @@ foreach ($hotels as $hotel) {
     if (isset($hotel['email'])) { echo "  <a class='mail' href='mailto:{$hotel['email']}'>{$hotel['email']}</a>\n"; }
     if (isset($hotel['tel']))   { echo "  <a class='tel' href='tel:$shorttel'>{$hotel['tel']}</a>\n"; }
     echo "</div>";
-
+/*
     if (isset($hotel['name1']) && $hotel['name1'] ) {
         echo "  <div class='small linetop'>\n";
         echo "    <span>{$hotel['name1']} ({$hotel['nr1']})</span>\n";
@@ -82,6 +78,7 @@ foreach ($hotels as $hotel) {
     echo "        <span>Deadline:</span>\n";
     echo "        <span class='rightib'>{$hotel['deadline']}</span>\n";
     echo "    </div>\n";
+    */
     echo "</div>\n";
 }
 ?>

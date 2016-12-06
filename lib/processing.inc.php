@@ -52,5 +52,11 @@ foreach ($tableFields as $key => $val) {
 }
 
 
+$PAGES_IDS = array();
+foreach ($PAGES as $itm) {
+    $PAGES_IDS[] = $itm[0];
+}
+
+
 
 ?>

@@ -20,10 +20,10 @@ header {
     text-align: left;
     background-color: #00002F;
     color: white;
-    background-image: url("../img/header_website.png");
+    /*background-image: url("../img/header_website.png");
     background-repeat: no-repeat;
     background-position: right top;
-    background-size: auto 100%;
+    background-size: auto 100%;*/
 }
 
 header h1 {

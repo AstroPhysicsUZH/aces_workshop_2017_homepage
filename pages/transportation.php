@@ -37,7 +37,6 @@
   Please print it out and carry it on you all the time.
 </p>
 
-<?php /*
 
 <p>
   Zurich has a <a href="http://www.zvv.ch/zvv/en/home.html">unified public transport system (ZVV)</a>: one ticket is valid for all means of transportation like trains, busses, trams, trolleys and ships.
@@ -66,18 +65,12 @@
   The multiple-journey ticket has to be validated <b>each time before</b> entering the vehicle at the vending machine.
 </p>
 
-<p>
-  If you stay 5 days and / or close by the Irchel campus, we recommend getting single "day pass tickets" on demand.
-  If you stay 6 days and have to take the tram daily to get to Irchel and/or want to travel around in Zurich often, we recommend getting the multiple-journey card with day passes.
-</p>
-
-*/ ?>
 
 <h3>Taxis</h3>
 <p>
   Taxis are quite expensive.
-  Expect to pay from CHF 20.&mdash; upwards even for short rides;
-  around CHF 40.&mdash; for a trip from the airport to Irchel.
+  Expect to pay from CHF 20.&ndash; upwards even for short rides;
+  around CHF 40.&ndash; for a trip from the airport to Irchel.
   <br>
   Some companies:
   TAXI444 <a href="tel:+41444444444">(+41 44 444 44 44)</a> or

@@ -8,7 +8,7 @@ require_once 'lib/app.php';
 if (array_key_exists('page', $_GET)) { $page = $_GET['page']; }
 else { $page = NULL; }
 
-if ( in_array(basename($page), $PAGES) || in_array(basename($page), $HIDDEN_PAGES)) {
+if ( in_array(basename($page), $PAGES_IDS) || in_array(basename($page), $HIDDEN_PAGES)) {
     $page = basename($page);
 }
 else { $page = "home"; }

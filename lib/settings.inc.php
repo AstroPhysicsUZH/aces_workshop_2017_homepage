@@ -32,13 +32,14 @@ $date_fstr = 'Y-m-d';               // how to present dates only
 $PAGES = array(
 #   id and php filename     title
     array('home',          'home'),
+    array('program',       'programme'),
     array('committees',    'committees'),
     array('registration',  'registration'),
     array('participants',  'participants'),
     array('accommodation', 'accommodation'),
     array('transportation','transportation'),
     array('q_and_a',       'Q & A'),
-    array('proceedings',   'proceedings'),
+#    array('proceedings',   'proceedings'),
     array('login',         'login'),
 );
 
@@ -47,7 +48,9 @@ $PAGES = array(
     grayed out, because not implemented
 */
 $NOT_IMPLEMENTED_PAGES = array(
-//    'participants',
+    'program',
+    'participants',
+    'login',
 );
 
 

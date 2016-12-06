@@ -10,6 +10,7 @@
 
 
 <h2>Public transportation</h2>
+<!--
 <ul>
     <li>
         You were sent a personal ticket for public transportation in Zurich. Please do always carry it with you, either printed out or on a mobile device, as well as some form of personal identification. Using public transportation without having the ticket and identification on you will result in a fine (CHF 100.-).
@@ -24,8 +25,10 @@
         See "transportation" on the left hand side
     </li>
 </ul>
+-->
 
 <h2>Lunch and coffee breaks</h2>
+<!--
 <ul>
     <li>
         Coffee breaks are between 10:30 and 11:00 in the morning and from 16:30 to 17:00 in the afternoon (15:15 to 15:30 on Wednesday afternoon). Coffee/tea and snacks will be served next to the registration desk.
@@ -40,9 +43,10 @@
         There are two other cafeterias on the campus for a quick snack.
     </li>
 </ul>
-
+-->
 
 <h2>Talks</h2>
+<!--
 <ul>
     <li>
         We will offer a presentation computer. To ensure a smooth transition between talks we would prefer if you used this computer, but you can still use your own laptop. The beamer has HDMI and VGA connections, and the recommended resolution is widescreen 1280x720.
@@ -61,10 +65,10 @@
         Alternatively, there will be access codes for the SSID "public" on site.
     </li>
 </ul>
-
+-->
 
 <h2>Conference dinner</h2>
-
+<!--
 <ul>
     <li>
         The conference dinner will take place on the Uetliberg at the restaurant Uto Kulm. An aperitif will be served at 18:45, the dinner will start around 19:30.
@@ -78,12 +82,13 @@
         If you are vegetarian, you were given a green ticket. Please put it on your table at the restaurant, it will make the waiters life much easier.
     </li>
 </ul>
-
+-->
 
 
 
 
 <h2>Sight Seeing / Events in Zurich</h2>
 <a href="https://www.zuerich.com">visit the official Tourist Information</a>
+
 
 </article>

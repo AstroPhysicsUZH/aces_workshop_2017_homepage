@@ -33,13 +33,13 @@ if ($DEBUG) {
 $now = new DateTime('NOW');
 
 $isBookingOpen = $now > $dateRegistrationOpens && $now < $dateRegistrationDeadline;
-$isItEarly     = $now < $dateReducedFeeDeadline;
 $isItTooEarly  = $now < $dateRegistrationOpens;
+$isItEarly     = $now < $dateReducedFeeDeadline;
 $isItTooLate   = $now > $dateRegistrationDeadline;
 
 
-$feeStudent = $isItEarly ? $feeReducedStudent : $feeFullStudent;
-$feeRegular = $isItEarly ? $feeReducedRegular : $feeFullRegular;
+#$feeStudent = $isItEarly ? $feeReducedStudent : $feeFullStudent;
+#$feeRegular = $isItEarly ? $feeReducedRegular : $feeFullRegular;
 
 
 

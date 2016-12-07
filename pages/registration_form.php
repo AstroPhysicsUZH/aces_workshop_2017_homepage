@@ -9,44 +9,42 @@ $( document ).ready(function(){
         Setup automatic price update
     */
     // set initial value
-    var baseprice = <?= $baseFee; ?>; // hey genious, this is for display only, the real value will be calculated server side anyways ;)
-    var dinnerprice = <?= $dinnerFee; ?>;
+    var baseprice = 0; // hey genious, this is for display only, the real value will be calculated server side anyways ;)
+    var dinnerprice = <?= $feeDinnerRegular; ?>;
     var price = baseprice + dinnerprice;
     $('#price').val("CHF " + price + ".00");
 
     //register update handler
     $("form :input").change(function() {
-        price = baseprice + (parseInt($('#npers').val())+1) * dinnerprice;
+        price = baseprice + (parseInt($('#npers').val())) * dinnerprice;
         $("#price").val("CHF " + price + ".00");
     });
 
     // trigger an change for inital calculation
     $("form").change();
 
-    /*
-        setup intertab com for preview
-    */
-	if (Intercom.supported) {
-		var title = document.title;
+/* setup intertab com for preview */
+    if (Intercom.supported) {
+        var title = document.title;
 
         var $first    = $('#firstname');
         var $last     = $('#lastname');
-		var $abstract = $('#abstract');
-		var $title    = $('#presentationTitle');
-		var $authors  = $('#coauthors');
+        var $abstract = $('#abstract');
+        var $title    = $('#presentationTitle');
+        var $authors  = $('#coauthors');
         var $affil    = $("#affiliation");
 
-		var intercom = new Intercom();
+        var intercom = new Intercom();
         var changeRate = 200; // only send each X ms an update
         var canFireRequest = true;
 
         $abstract
-            .add($title)
-            .add($authors)
-            .add($first)
-            .add($last)
-            .add($affil)
-            .on('change keyup paste', function() {
+        .add($title)
+        .add($authors)
+        .add($first)
+        .add($last)
+        .add($affil)
+        .on('change keyup paste', function() {
             /* this function is rate limited! because mathjax reloads.. */
             if (canFireRequest) {
                 canFireRequest = false;
@@ -67,14 +65,15 @@ $( document ).ready(function(){
                 }, changeRate);
             }
         });
-	} else {
-		alert('intercom.js is not supported by your browser. The preview function will not work');
-	}
-});
+        }
+        else {
+          alert('intercom.js is not supported by your browser. The preview function will not work');
+        }
+    });
 </script>
 
 
-<form action="lib/register.php" method="post">
+<form action="pages/registration_handler.php" method="post">
 
 <?php if ($isItTooLate) { ?>
     <div class='bookedout'>
@@ -92,7 +91,6 @@ $( document ).ready(function(){
         <tr>
             <td colspan="2" style="text-align:left;">
                 Please enter your personal details.
-
             </td>
         </tr>
         <tr>
@@ -160,18 +158,9 @@ $( document ).ready(function(){
                 <label for="needInet">I require WiFi access / <br />I don't have EDUROAM</label>
             </td>
         </tr>
-        <!--
-        <tr>
-            <td>
-                <input id="c0" class="left" type="checkbox" name="stud" value="stud"> </td>
-            <td>
-                <label for="c0">Student</label>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align:left;"> If you want to get the students rabatte, please send us a copy of your student ID by mail. </td>
-        </tr>
-        -->
+
+
+
         <thead>
             <th colspan="2">
                 <h2>Presentation</h2>
@@ -179,39 +168,21 @@ $( document ).ready(function(){
         </thead>
         <tr>
             <td colspan="2" style="text-align:left;">
-                Do you want to present a poster / talk?
+                Do you want to present a  talk?
                 <br />
                 If so, please provide a short abstract (up to 200 words).
-                Please note that the the selection of contributed talk and poster presentation will be made by the Session Chairs.
-                Because on the limited number of speaking slots, not all requests to speak can be accommodated.
                 After registration, you will be notified in due time on its acceptance.
                 You will be able to change your submission after completing the registration.
                 <br />
-                (Deadline for abstract submission: <?=$abstractSubmissionDate->format($date_fstr);?>)
+                (Deadline for abstract submission: <?=$dateAbstractSubmissionDeadline->format($date_fstr);?>)
             </td>
         </tr>
         <tr>
             <td>
-                <input id="r1" type="radio" name="talkType" value="none" checked>
+                <input id="isRequestingTalk" class="left" type="checkbox" name="isRequestingTalk" value="X">
             </td>
             <td>
-                <label for="r1">None</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input id="r2" type="radio" name="talkType" value="poster">
-            </td>
-            <td>
-                <label for="r2">Poster</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input id="r3" type="radio" name="talkType" value="talk">
-            </td>
-            <td>
-                <label for="r3">Talk</label>
+                <label for="isRequestingTalk">I'd like to present a talk</label>
             </td>
         </tr>
         <tr>
@@ -254,18 +225,18 @@ $( document ).ready(function(){
         </thead>
         <tr>
             <td colspan="2" style="text-align:left;">
-                The conference dinner is included in the registration fee.
-                Mobility impaired people please let us know, such that we can organize transport between the train station and the restaurant.
+                The conference dinner takes place in the evening of the first day.
+                It costs CHF <?=$feeDinnerRegular;?>.&mdash; per person and has to be payed in cash upon arrival.
             </td>
         </tr>
         <tr>
             <td>
                 <input id="npers"
                     class="left" type="number" name="nPersons"
-                    value="0" style="width:5em;height:2em;text-align:center;" min="0" max="5">
+                    value="1" style="width:5em;height:2em;text-align:center;" min="0" max="5">
             </td>
             <td>
-                <label for="nPersons">Accompanying persons (+ CHF 100.&mdash; each)</label>
+                <label for="nPersons">Total persons</label>
             </td>
         </tr>
         <tr>
@@ -276,14 +247,8 @@ $( document ).ready(function(){
                 <label for="c1">Vegetarian meal</label>
             </td>
         </tr>
-        <tr>
-            <td>
-                <input id="isImpaired" class="left" type="checkbox" name="isImpaired" value="checked">
-            </td>
-            <td>
-                <label for="isImpaired">Mobility impaired</label>
-            </td>
-        </tr>
+
+
 
         <thead>
             <th colspan="2">
@@ -292,19 +257,10 @@ $( document ).ready(function(){
         </thead>
         <tr>
             <td colspan="2" style="text-align:left;">
-                Please organize accomodation yourself and in time!<br />
-                If you are looking for a shared appartement and possible room mates, tick the box and we will add your email to a google group where you can reach others.
-                (your email adress will be seen by other participants)
+                Please organize accomodation yourself and in time!
             </td>
         </tr>
-        <tr>
-            <td>
-                <input id="lookingForRoomMate" class="left" type="checkbox" name="lookingForRoomMate" value="checked">
-            </td>
-            <td>
-                <label for="lookingForRoomMate">Looking for room mates</label>
-            </td>
-        </tr>
+
 
 <?php if ($isItTooLate) { ?>
     <tr><td colspan="2">
@@ -321,7 +277,10 @@ $( document ).ready(function(){
         </thead>
         <tr id="tr_price">
             <td>
-                <label for="price" class="left">Total amount to pay:</label>
+                <label for="price" class="left">
+                    Total amount to pay:<br />
+                    upon arrival
+                </label>
             </td>
             <td>
                 <input id="price" type="text" name="price" readonly placeholder="Resulting Price...">
@@ -329,14 +288,17 @@ $( document ).ready(function(){
         </tr>
         <tr>
             <td> Spam protection: </td>
-            <td> Please enter the <b>result</b> of this equation: </td>
+            <td> Please enter the <b>middle digit</b> of this number:</td>
         </tr>
+<?php
+$rnd = rand(100,999);
+?>
         <tr>
             <td>
-                <label class="left">5 + 32 = </label>
+                <label class="left"><?=$rnd;?></label>
             </td>
             <td>
-                <input class="right" type="text" name="robot" style="width:5em;" required pattern="37">
+                <input class="right" type="text" name="robot" style="width:5em;" required pattern="[0-9]">
                 <span></span>
             </td>
         </tr>
@@ -349,5 +311,8 @@ $( document ).ready(function(){
 <?php if ($isItTooLate) { ?>
 </fieldset>
 <?php } ?>
+
+<input type="hidden" name="check" value="<?=$rnd;?>" >
+<input type="hidden" name="action" value="save" >
 
 </form>

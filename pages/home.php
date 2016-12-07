@@ -31,12 +31,6 @@
     </li>
     <li>
         <span class='small datetime'>
-            <?=$dateReducedFeeDeadline->format($datetime_fstr)?>
-        </span>
-        Deadline for early registration
-    </li>
-    <li>
-        <span class='small datetime'>
             <?=$dateRegistrationDeadline->format($datetime_fstr)?>
         </span>
         Registration closes

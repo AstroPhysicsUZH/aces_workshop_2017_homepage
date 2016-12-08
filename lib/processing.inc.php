@@ -9,11 +9,10 @@
 // administrative fields, don't change
 $tableFields = array_merge($tableFields, array(
 
-  'registrationDate' => ['TEXT', 'date'],
-  'lastAccessDate'   => ['TEXT', 'date'],
-  'accessKey'        => ['INTEGER', 'hex'],
+  'registrationDate' => ['TEXT', 'datetime', ""],
+  'accessKey'        => ['TEXT', 'string', ""], # actually a hex
 
-  'log'              => ['TEXT', 'string'],  # kind of a log for keeping track of stuff..
+  'log'              => ['TEXT', 'string', ""],  # kind of a log for keeping track of stuff..
 
 ));
 

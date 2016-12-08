@@ -4,60 +4,47 @@
     you can use all the fields of the database, with $X['firstname']
 
     this should set:
-    $from
-    $replyto
     $subject
     $message
+
+    $subject
+    $message
+
+    and maybe the ones with prefix admin to be sent to the admin mail address
 
     Make sure to be RFC5322 compatible:
     - use \r\n linebreaks
     - use quotes in the email address! '"name" <email@inter.net>'
 **/
 
-$from    = '"LISA Symposium Website" <relativityUZH@gmail.com>';
-$replyto = $from;
-$subject = "11th LISA Symposium Registration [{$X["id"]}]";
+$subject = "[aces17] ACES Workshop 2017 Registration ({$X["id"]})";
 $message = preg_replace('~\R~u', "\r\n",  # make sure we have RFC 5322 linebreaks
 
 "Dear Mrs/Mr {$X["lastname"]}
 
-Thank you very much for your registration for the 11th LISA Symposium in Zurich.
-
-!! Please confirm your registration by clicking on this link: !!
-http://www.physik.uzh.ch/events/lisa2016/activate.php?akey={$X['accessKey']}
+Thank you very much for your registration for the ACES workshop 2017 in Zurich.
 
 You can login into the user center with your email address and access key:
-http://www.physik.uzh.ch/events/lisa2016/user/
+$BASEURL/user/
 or use this direct link:
-http://www.physik.uzh.ch/events/lisa2016/user/login.php?op=login&email=".urlencode($X['email'])."&akey={$X['accessKey']}&rdir=index.php
+$BASEURL/user/login.php?op=login&email=".urlencode($X['email'])."&akey={$X['accessKey']}&rdir=index.php
 
 Your access key is: {$X['accessKey']}
-
-In the user center you can:
-* Download an invoice:
-http://www.physik.uzh.ch/events/lisa2016/user/login.php?op=login&email=".urlencode($X['email'])."&akey={$X['accessKey']}&rdir=invoice_.php
-* Download an invitation letter:
-http://www.physik.uzh.ch/events/lisa2016/user/login.php?op=login&email=".urlencode($X['email'])."&akey={$X['accessKey']}&rdir=invite.php
-* Change your details:
-http://www.physik.uzh.ch/events/lisa2016/user/login.php?op=login&email=".urlencode($X['email'])."&akey={$X['accessKey']}&rdir=edit.php
-
-
-Your registration fee is: CHF {$X["price"]}.--
-
-Please transfer it with bank transfer to:
-
-Rechnungswesen der Universitat Zurich
-LISA Symposium
-8057 Zurich
-
-IBAN-Nr.: CH12 0900 0000 3109 1810 4
-Swift/BIC: POFICHBEXXX
-Message: ".sprintf('%03d', intval($X["id"]))." {$X["lastname"]}
 
 If there are any questions, simply reply to this email (relativityUZH@gmail.com).
 
 Kind regards,
 The local OK
 ");
+
+
+/******************************************************************************/
+
+$admin_subject = "[aces17-log] new registration";
+$admin_message = preg_replace('~\R~u', "\r\n",
+"new registration
+{$X['id']}; {$X['lastname']}; {$X['firstname']}; {$X['email']}
+
+" . json_encode($X));
 
 ?>

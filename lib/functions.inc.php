@@ -145,3 +145,15 @@ function endsWith($haystack, $needle)
 
     return (substr($haystack, -$length) === $needle);
 }
+
+
+
+/**
+ * Returns the url of the current page
+ **/
+function get_baseurl() {
+    $url  = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+    $url .= $_SERVER['SERVER_NAME'];
+    $url .= $_SERVER['REQUEST_URI'];
+    return $url;
+}

@@ -1,5 +1,7 @@
 {
     "require": {
-        "phpmailer/phpmailer": "^5.2"
+        "phpmailer/phpmailer": "^5.2",
+        "tecnickcom/tcpdf": "^6.2",
+        "league/csv": "^8.1"
     }
 }

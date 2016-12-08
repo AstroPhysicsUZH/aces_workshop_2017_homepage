@@ -78,7 +78,7 @@ $feeFullRegular    = 0;  // conference cost for late bookers
 $feeDinnerRegular  = 100; // the price of the dinner, per person
 
 
-$dateRegistrationOpens          = new DateTime("2017-01-01 00:00:00"); // the date when early booking is over
+$dateRegistrationOpens          = new DateTime("2016-01-01 00:00:00"); // the date when early booking is over
 #$dateReducedFeeDeadline         = new DateTime("2016-07-31 23:59:59"); // the date when early booking is over
 $dateReducedFeeDeadline         = $dateRegistrationOpens;
 $dateAbstractSubmissionDeadline = new DateTime("2017-05-15 23:59:59");
@@ -113,24 +113,34 @@ $sessionsTable = "sessionsTable";
 $UPLOADS_DIR = "uploads";
 $pages_dir = "pages";
 
-// Which fields do you want to have in the database?
-// database table columns with key => [SQL_DATATYPE, meaning]
+
+/*
+Which fields do you want to have in the database?
+database table columns with
+key => [SQL_DATATYPE, meaning, default, choices]
+
+meaning is one of:
+    string, integer, boolean, choice, datetime, date, time, file
+choices is an array:
+    [choice0_default, choice1, ...] is freiwillig and the first choice 0 is default
+    they are referenced either by name or by id.
+*/
 $tableFields = array(
 
 // personal information
-    'title'       => ['TEXT', 'string'],
-    'firstname'   => ['TEXT', 'string'],
-    'lastname'    => ['TEXT', 'string'],
-    'email'       => ['TEXT', 'string'],
-    'affiliation' => ['TEXT', 'string'],
-    'address'     => ['TEXT', 'string'],
+    'title'       => ['TEXT', 'string', ""],
+    'firstname'   => ['TEXT', 'string', ""],
+    'lastname'    => ['TEXT', 'string', ""],
+    'email'       => ['TEXT', 'string', ""],
+    'affiliation' => ['TEXT', 'string', ""],
+    'address'     => ['TEXT', 'string', ""],
 
-    'isPassive'   => ['INTEGER', 'boolean'], # passive accounts are for lazy VIP that don't feel like they have to register (won't get emails)
+    'isPassive'   => ['INTEGER', 'boolean', FALSE], # passive accounts are for lazy VIP that don't feel like they have to register (won't get emails)
 
 // options
-    'needInet'   => ['INTEGER', 'boolean'], # people that don't have eduroam
-    'nPersons'   => ['INTEGER', 'integer'], # total amount of people, incl accompaning.. >=1
-    'isVeggie'   => ['INTEGER', 'boolean'],
+    'needsInet'   => ['INTEGER', 'boolean', FALSE], # people that don't have eduroam
+    'nPersons'    => ['INTEGER', 'integer', 1], # total amount of people, incl accompaning.. >=1
+    'isVeggie'    => ['INTEGER', 'boolean', FALSE],
 #    'isImpaired' => ['INTEGER', 'boolean'],
 #    'lookingForRoomMate' => ['INTEGER', 'boolean'],
 
@@ -141,13 +151,13 @@ $tableFields = array(
 #    'paymentNotes' => ['TEXT', 'string'], # special notes about the payment, can be seen by the user
 
 
-    'wantsPresentTalk' => ['INTEGER', 'boolean'],
-    'talkTitle'     => ['TEXT', 'string'],
-    'talkCoauthors' => ['TEXT', 'string'],
-    'talkAbstract'  => ['TEXT', 'string'],
+    'wantsPresentTalk' => ['INTEGER', 'boolean', FALSE],
+    'talkTitle'      => ['TEXT', 'string', ""],
+    'talkCoauthors'  => ['TEXT', 'string', ""],
+    'talkAbstract'   => ['TEXT', 'string', ""],
 
-    'isTalkChecked'  => ['INTEGER', 'boolean'],  # has it been considered / looked at, and descision shall be published
-    'isTalkAccepted' => ['INTEGER', 'boolean'], # ... the desicission. Only valid if isTalkChecked=True
+    'isTalkChecked'  => ['INTEGER', 'boolean', FALSE],  # has it been considered / looked at, and descision shall be published
+    'isTalkAccepted' => ['INTEGER', 'boolean', FALSE], # ... the desicission. Only valid if isTalkChecked=True
 
 /*
     'talkType' => ['INTEGER', 'choice', ['none', 'talk', 'poster']],

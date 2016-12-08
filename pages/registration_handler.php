@@ -1,9 +1,14 @@
 <?php
+
 if (!$appIsLoaded) {
     require_once "../lib/app.php";
     require_once "../lib/emails.inc.php";
 }
 
+$BASEURL = dirname(dirname(get_baseurl()));
+
+
+print_r("post:\n");
 print_r($_POST);
 
 if (!empty($_POST)) {
@@ -26,61 +31,38 @@ if (!empty($_POST)) {
     }
 
     if ($action=="save") {
-/*
+
         if (!$isBookingOpen) {
             echo "<h1 style='text-align:center;'>Sorry, the registration is really closed!!</h1>";
             var_dump($_POST);
             die(1);
         }
-*/
-/*
+
+
         if (! isset($_POST['email']) || strlen($_POST['email']) <6) {
             echo "<h1 style='text-align:center;'>No email in POST or too short<br>However this happend...</h1>";
             var_dump($_POST);
             die(1);
         }
-*/
-        /*
-            init to default values
-            because checkboxes only give a value if checked..
-            all others could be set to null
 
-            make sure here are only fields that settings.php defines!!
-        */
-        $vals = [
-            "title" => "",
-            "firstname" => "",
-            "lastname" => "",
-            "email" => "",
-            "affiliation" => "",
-            "address" => "",
+        $vals = []; // values to be written in the database
 
-            "isPassive" => FALSE,
-
-            "needInet" => FALSE,
-            "nPersons" => 1,
-            "isVeggie" => FALSE,
-
-            'wantsPresentTalk' => FALSE,
-            'talkTitle'     => "",
-            'talkCoauthors' => "",
-            'talkAbstract'  => "",
-
-            'isTalkChecked'  => FALSE,  # has it been considered / looked at, and descision shall be published
-            'isTalkAccepted' => FALSE, # ... the desicission. Only valid if
-         ];
-
-        // read post fields
+        // scan though all possible database fields
         foreach ($tableFields as $key => $arr) {
+
             $sqltype = $arr[0];
-            $type = $arr[1];
-            $choices = (isset($arr[2])) ? $arr[2] : NULL ;
+            $type    = $arr[1];
+            $default = (isset($arr[2])) ? $arr[2] : "";
+            $choices = (isset($arr[3])) ? $arr[3] : NULL ;
 
             # echo $key. ' | '.$type. ' | '.isset($_POST[$key])."<br />\n";
 
+            $vals[$key] = $default; // first set to default value from settings.php
+
             if (isset($_POST[$key])) {
+
                 $x = $_POST[$key];
-                # echo $x . "\n";
+
                 if ($type == 'string') {
                     $vals[$key] = strval($x);
                 }
@@ -88,7 +70,7 @@ if (!empty($_POST)) {
                     $vals[$key] = intval($x);
                 }
                 elseif ($type == "boolean") {
-                    $vals[':'.$key] = boolval($x);
+                    $vals[$key] = ($x == "TRUE" ? TRUE : FALSE);
                 }
                 elseif ($type == "choice") {
                     if (is_numeric($x)) {
@@ -98,28 +80,22 @@ if (!empty($_POST)) {
                         $vals[$key] = intval(array_search($x, $choices, TRUE)); # if not found this returns False, which gets casted to 0, the first and default choice
                     }
                 }
-                elseif ($type == "date") {
+                elseif ($type == "datetime") {
                     $dt = new DateTime($x);
                     $vals[$key] = $dt->format($datetime_db_fstr);
                 }
             }
-            else { # if no default value is set, set to null
-                if (!isset($vals[$key])) {
-                    $vals[$key] = NULL;
-                }
-            }
         }
 
-        // fill in other fields
-
+        // override automatic fields
         $vals["log"] = $now->format($datetime_db_fstr) . "\t(webform)\tregistration\n";
         $vals["registrationDate"] = $now->format($datetime_db_fstr);
-        $vals["lastAccessDate"] = NULL;
 
         $akey = bin2hex(openssl_random_pseudo_bytes(4)); # 4 bytes makes 8 = 2x4 hex digits
         $vals["accessKey"] = $akey;
 
-        var_dump($vals);
+        #print "vals";
+        #var_dump($vals);
 
         try {
             // Create (connect to) SQLite database (creates if not exists)
@@ -146,6 +122,9 @@ if (!empty($_POST)) {
             $stmt = $db->prepare($insert);
             $stmt->execute($vals);
             $lastId = $db->lastInsertId();
+
+            file_put_contents($logfile, "writing entry: ".json_encode($vals)."\n", FILE_APPEND | LOCK_EX);
+
         }
 
         catch(PDOException $e) {
@@ -163,13 +142,16 @@ if (!empty($_POST)) {
         $stmt = null;
         print "DONE\n";
 
-        $stmt = $dbh->prepare("SELECT * FROM {$tableName} WHERE id=:uid LIMIT 1");
+        $stmt = $db->prepare("SELECT * FROM {$tableName} WHERE id=:uid LIMIT 1");
         $stmt->execute([':uid' => $lastId]);
         $data = $stmt->fetch();
 
-        send_registration_email($data);
+        send_registration_email($data, $BASEURL);
 
+        echo "<h1 style='text-align:center;'>Registration successful</h1>\n";
 
+        $db = null;
+        exit();
     }
 }
 

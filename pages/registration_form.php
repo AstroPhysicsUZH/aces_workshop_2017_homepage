@@ -16,7 +16,7 @@ $( document ).ready(function(){
 
     //register update handler
     $("form :input").change(function() {
-        price = baseprice + (parseInt($('#npers').val())) * dinnerprice;
+        price = baseprice + (parseInt($('#nPersons').val())) * dinnerprice;
         $("#price").val("CHF " + price + ".00");
     });
 
@@ -152,10 +152,11 @@ $( document ).ready(function(){
         </tr>
         <tr>
             <td>
-                <input id="needInet" class="left" type="checkbox" name="needInet" value="X">
+                <input type="hidden" name="needsInet" value="FALSE">
+                <input id="needsInet" class="left" type="checkbox" name="needsInet" value="TRUE">
             </td>
             <td>
-                <label for="needInet">I require WiFi access / <br />I don't have EDUROAM</label>
+                <label for="needsInet">I require WiFi access / <br />I don't have EDUROAM</label>
             </td>
         </tr>
 
@@ -179,42 +180,43 @@ $( document ).ready(function(){
         </tr>
         <tr>
             <td>
-                <input id="isRequestingTalk" class="left" type="checkbox" name="isRequestingTalk" value="X">
+                <input type="hidden" name="wantsPresentTalk" value="FALSE">
+                <input id="wantsPresentTalk" class="left" type="checkbox" name="wantsPresentTalk" value="TRUE">
             </td>
             <td>
-                <label for="isRequestingTalk">I'd like to present a talk</label>
+                <label for="wantsPresentTalk">I'd like to present a talk</label>
             </td>
         </tr>
         <tr>
             <td>
-                <label for="presentationTitle" class="left">Titel</label>
+                <label for="talkTitle" class="left">Titel</label>
             </td>
             <td>
-                <input id="presentationTitle" type="text" name="presentationTitle" placeholder="Titel of Presentation">
+                <input id="talkTitle" type="text" name="talkTitle" placeholder="Titel of Presentation">
                 <span></span>
             </td>
         </tr>
         <tr>
             <td>
-                <label for="coauthors" class="left">Co-Authors</label>
+                <label for="talkCoauthors" class="left">Co-Authors</label>
             </td>
             <td>
-                <input id="coauthors" type="text" name="coauthors" placeholder="Last, First; Last, First; ...">
+                <input id="talkCoauthors" type="text" name="talkCoauthors" placeholder="Last, First; Last, First; ...">
                 <span></span>
             </td>
         </tr>
         <tr>
             <td>
-                <label for="abstract" class="left">Abstract</label>
+                <label for="talkAbstract" class="left">Abstract</label>
             </td>
             <td>
-                <textarea id="abstract" name="abstract"
+                <textarea id="talkAbstract" name="talkAbstract"
                           style="height:10em;"
                           placeholder="Short abstract (max 200 words). You can use basic latex commands (MathJax), check the preview."
                           ></textarea>
                 <br />
                 <?php /* open popup and trigger initial update for datatransfer */ ?>
-                <a href="preview.php"  style="font-size: 80%;" onclick="window.open('preview.php', 'newwindow', 'width=400, height=600'); setTimeout(function() {$('#abstract').change()},500); return false;">open preview (disable popup blocker)</a>
+                <a href="preview.php"  style="font-size: 80%;" onclick="window.open('preview.php', 'newwindow', 'width=400, height=600'); setTimeout(function() {$('#talkAbstract').change()},500); return false;">open preview (disable popup blocker)</a>
             </td>
         </tr>
 
@@ -231,7 +233,7 @@ $( document ).ready(function(){
         </tr>
         <tr>
             <td>
-                <input id="npers"
+                <input id="nPersons"
                     class="left" type="number" name="nPersons"
                     value="1" style="width:5em;height:2em;text-align:center;" min="0" max="5">
             </td>
@@ -241,10 +243,11 @@ $( document ).ready(function(){
         </tr>
         <tr>
             <td>
-                <input id="c1" class="left" type="checkbox" name="isVeggie" value="checked">
+                <input type="hidden" name="isVeggie" value="FALSE">
+                <input id="isVeggie" class="left" type="checkbox" name="isVeggie" value="TRUE">
             </td>
             <td>
-                <label for="c1">Vegetarian meal</label>
+                <label for="isVeggie">Vegetarian meal</label>
             </td>
         </tr>
 
@@ -260,15 +263,6 @@ $( document ).ready(function(){
                 Please organize accomodation yourself and in time!
             </td>
         </tr>
-
-
-<?php if ($isItTooLate) { ?>
-    <tr><td colspan="2">
-    <div class='bookedout'>
-        BOOKED OUT
-    </div>
-</td></tr>
-<?php } ?>
 
         <thead>
             <th colspan="2">

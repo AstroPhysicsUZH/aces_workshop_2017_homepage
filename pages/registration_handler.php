@@ -1,6 +1,7 @@
 <?php
 if (!$appIsLoaded) {
     require_once "../lib/app.php";
+    require_once "../lib/emails.inc.php";
 }
 
 print_r($_POST);
@@ -161,6 +162,14 @@ if (!empty($_POST)) {
         $res = null;
         $stmt = null;
         print "DONE\n";
+
+        $stmt = $dbh->prepare("SELECT * FROM {$tableName} WHERE id=:uid LIMIT 1");
+        $stmt->execute([':uid' => $lastId]);
+        $data = $stmt->fetch();
+
+        send_registration_email($data);
+
+
     }
 }
 

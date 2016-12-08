@@ -1,6 +1,8 @@
 *.directory
 .kateproject.d
 *.xcf
+
+vendor
 bower_components
 
 img/src/sig*

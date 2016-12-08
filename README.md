@@ -23,3 +23,8 @@ the hookSecret that is in the file secret.php `head -n 2 test.txt | tail -1`
 
 Which events:
 Just push
+
+
+## php dependencies
+we use composor for this
+

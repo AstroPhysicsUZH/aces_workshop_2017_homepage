@@ -12,6 +12,11 @@
     command line
 **/
 
+echo "creating new file\n";
+$outp = "";
+exec('sqlite3 ../db/registration.sqlite3 ".databases" 2>&1', $outp, $retval);
+var_dump($outp);
+
 require_once "../lib/app.php";
 
 
@@ -23,7 +28,6 @@ function getColumns($dbhandle, $tableName) {
     }
     return $columns;
 }
-
 
 try {
     // Create (connect to) SQLite database (creates if not exists)
@@ -65,7 +69,7 @@ try {
 
     // write csv header
     $header = implode(", ", array_keys($tableFields));
-    file_put_contents($csv_db_name, "id,".$header, FILE_APPEND | LOCK_EX);
+    file_put_contents($logfile, "setup fields: id,".$header."\n", FILE_APPEND | LOCK_EX);
 }
 catch(PDOException $e) {
     // Print PDOException message

@@ -128,3 +128,32 @@ function tableExists($pdo, $table) {
     // Result is either boolean FALSE (no table found) or PDOStatement Object (table found)
     return $result !== FALSE;
 }
+
+
+
+
+/**
+ * endsWith - check if string ends with otherstring
+ * http://stackoverflow.com/questions/834303/startswith-and-endswith-functions-in-php
+ **/
+function endsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    if ($length == 0) {
+        return true;
+    }
+
+    return (substr($haystack, -$length) === $needle);
+}
+
+
+
+/**
+ * Returns the url of the current page
+ **/
+function get_baseurl() {
+    $url  = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+    $url .= $_SERVER['SERVER_NAME'];
+    $url .= $_SERVER['REQUEST_URI'];
+    return $url;
+}

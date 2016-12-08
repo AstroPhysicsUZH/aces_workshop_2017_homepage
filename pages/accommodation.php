@@ -27,7 +27,7 @@ Link to edit the map:
 
 <?php
 
-$hotels = csv_to_array('data/hotels.csv');
+$hotels = csv_to_array('page/data/hotels.csv');
 
 foreach ($hotels as $hotel) {
     #var_dump($hotel);

@@ -6,11 +6,13 @@
 $DEBUG = TRUE;
 
 $confTitle = "ACES Workshop";
+$confSubTitle = "Fundamental and applied science with clocks and cold atoms in space";
+
 $confShortTitle = "ACES Workshop Zurich 2017 ";
 
-$confLocation = "Irchel Campus, University Zurich, Switzerland";
-$confDatetime = "June 29 &ndash; 30, 2017";
-$confSubTitle = $confLocation . " <br /> " . $confDatetime;
+$confLocation = "University Zurich, Switzerland";
+$confDate = "June 29 &amp; 30, 2017";
+$confLocationAndTime = $confLocation . " &mdash; " . $confDate;
 
 // Set default timezone
 date_default_timezone_set('UTC');
@@ -38,7 +40,7 @@ $PAGES = array(
     array('participants',  'participants'),
     array('accommodation', 'accommodation'),
     array('transportation','transportation'),
-    array('q_and_a',       'Q & A'),
+#    array('q_and_a',       'Q & A'),
 #    array('proceedings',   'proceedings'),
     array('login',         'login'),
 );

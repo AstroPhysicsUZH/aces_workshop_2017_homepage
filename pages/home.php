@@ -3,7 +3,7 @@
     ACES Workshop Intro Text
     organized by University of Zurich
     and takes place at the <?=$confLocation?>
-    in <?=$confDatetime?>
+    in <?=$confDate?>
 </p>
 
 <p>

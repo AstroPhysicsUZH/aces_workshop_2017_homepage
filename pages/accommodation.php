@@ -27,7 +27,8 @@ Link to edit the map:
 
 <?php
 
-$hotels = csv_to_array('page/data/hotels.csv');
+$hotels = csv_to_array('pages/data/hotels.csv');
+
 
 foreach ($hotels as $hotel) {
     #var_dump($hotel);
@@ -51,7 +52,7 @@ foreach ($hotels as $hotel) {
     }
     echo "  </a>\n";
     echo "  <h3 class='linebot centered'>{$hotel['name']}</h3>\n";
-    echo "  <div class='small linebot'>\n";
+    echo "  <div class='small linebot centered'>\n";
     if (isset($hotel['street'])) { echo "    {$hotel['street']}<br>\n"; }
     if (isset($hotel['loc']))    { echo "    {$hotel['loc']}\n"; }
     echo "  </div>\n";

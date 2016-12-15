@@ -70,6 +70,7 @@ function csv_to_array($filename = '', $delimiter = ',')
         while (($row = fgetcsv($handle, 1000, $delimiter)) !== false) {
             if (!$header) {
                 $header = $row;
+                #var_dump($header);
             } else {
                 $data[] = array_combine($header, $row);
             }

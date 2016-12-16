@@ -30,21 +30,37 @@ header {
 
 header h1 {
     margin: 0;
-    padding: 0.5em 0.5em 0.25em 0.5em;
+    padding: 0.5em 0.5em 0.25em 120px;
     font-size: 2em;
 }
 
 header h2 {
     margin: 0;
-    padding: 0.25em 0.5em 0.25em 0.5em;
+    padding: 0.25em 0.5em 0.25em 120px;
     font-size: 1.25em;
 }
 
 header h3 {
     margin: 0;
-    padding: 0em 0.5em 0.5em 0.5em;
+    padding: 0em 0.5em 0.5em 120px;
     font-size: 1.25em;
 }
+
+
+.headerimg {
+    height: 120px;
+    margin-top: 1em;
+    border: none !important;
+}
+
+.headerleft {
+    float: left;
+}
+
+.headerright{
+    float:right;
+}
+
 
 nav ul {
     padding: 0;

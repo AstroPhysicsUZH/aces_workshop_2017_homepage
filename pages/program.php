@@ -6,4 +6,5 @@
     <li>Peter Wolf (Syrte Paris)</li>
     <li>Luigi Cacciapuoti (ESA)</li>
     <li>Christophe Salomon (Laboratoire Kastler Ecole Normale Superieure -Paris)</li>
+    <li>Manuel Rodriguez (ONERA, Palaiseau)</li>
 </ul>

@@ -88,7 +88,7 @@ $dateRegistrationDeadline       = new DateTime("2017-05-30 23:59:59"); // the da
 $dateConferenceStarts  = new DateTime("2017-06-29 00:00:00");
 $dateConferenceEnds    = new DateTime("2017-06-30 23:59:59");
 
-$dateConferenceDinner  = new DateTime("2016-09-29 19:00:00");
+$dateConferenceDinner  = new DateTime("2016-06-29 19:00:00");
 
 
 

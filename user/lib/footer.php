@@ -1,9 +1,9 @@
 
 <footer>
-  <img class="footerimg left" src="../img/lisapf_logo.png" alt="lisa_pathfinder_logo" />
-  <img class="footerimg" src="../img/uzh_logo_e_neg_border.png" alt="uzhlogo" />
-  <img class="footerimg" src="../img/eth_logo.png" alt="ethlogo" />
-  <img class="footerimg" src="../img/pauli.png" alt="paulilogo" />
+    <img class="footerimg left" src="../img/ACES_logo.png" alt="aces_logo" />
+
+    <img class="footerimg" src="../img/esa_black.png" alt="esalogo" />
+    <img class="footerimg" src="../img/uzh_logo_e_pos_klein.png" alt="uzhlogo" />
 </footer>
 
 </div>

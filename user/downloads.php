@@ -12,6 +12,7 @@ $pid = sprintf("%03u", $_SESSION['uid']);
 <article>
     <h1>Downloads</h1>
 
+<!--
     <h2>Invoice</h2>
     <p>
         Here you can download your invoice.<br />
@@ -25,7 +26,6 @@ $pid = sprintf("%03u", $_SESSION['uid']);
         </div>
         <button type="submit">get invoice</button>
     </form>
-
     <h2>Letter of Attendance</h2>
     <p>
         Here you can download a letter of attendance.<br />
@@ -53,12 +53,14 @@ $pid = sprintf("%03u", $_SESSION['uid']);
         </div>
         <button type="submit">get receipt</button>
     </form>
+-->
 
     <h2>Invitation Letter</h2>
     <p>
         Please contact us directly by email (reply to the registration email) to get an invitation letter.
     </p>
 
+<!--
     <h2>Public Transportation Ticket</h2>
     <p>
         Please read the text on the ticket about where its valid and don't forget to bring an ID or passport with you.
@@ -66,6 +68,7 @@ $pid = sprintf("%03u", $_SESSION['uid']);
     <p>
         <a href="../files/zvv/<?=$pid?>.pdf">download</a>
     </p>
+-->
 
 </article>
 </main>

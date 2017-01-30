@@ -17,7 +17,9 @@
     - use quotes in the email address! '"name" <email@inter.net>'
 **/
 
-$subject = $confEmailKey . " " . $confShortTitle . Registration ({$X["id"]})";
+include "../lib/settings.inc.php";
+
+$subject = "$confEmailKey Registration - $confShortTitle [{$X["id"]}]";
 $message = preg_replace('~\R~u', "\r\n",  # make sure we have RFC 5322 linebreaks
 
 "Dear Mrs/Mr {$X["lastname"]}

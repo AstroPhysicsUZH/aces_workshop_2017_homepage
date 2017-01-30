@@ -142,7 +142,7 @@ $tableFields = array(
 // options
     'needsInet'   => ['INTEGER', 'boolean', FALSE], # people that don't have eduroam
     'nPersons'    => ['INTEGER', 'integer', 1], # total amount of people, incl accompaning.. >=1
-    'isVeggie'    => ['INTEGER', 'boolean', FALSE],
+    'nVeggies'    => ['INTEGER', 'integer', 0],
 #    'isImpaired' => ['INTEGER', 'boolean'],
 #    'lookingForRoomMate' => ['INTEGER', 'boolean'],
 

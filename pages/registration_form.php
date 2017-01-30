@@ -238,19 +238,19 @@ $( document ).ready(function(){
                     value="1" style="width:5em;height:2em;text-align:center;" min="0" max="5">
             </td>
             <td>
-                <label for="nPersons">Total persons</label>
+                <label for="nPersons">Total persons (including yourself)</label>
             </td>
         </tr>
         <tr>
             <td>
-                <input type="hidden" name="isVeggie" value="FALSE">
-                <input id="isVeggie" class="left" type="checkbox" name="isVeggie" value="TRUE">
+                <input id="nVeggie"
+                    class="left" type="number" name="nVeggie"
+                    value="0" style="width:5em;height:2em;text-align:center;" min="0" max="5">
             </td>
             <td>
-                <label for="isVeggie">Vegetarian meal</label>
+                <label for="nVeggie">Vegetarian meals</label>
             </td>
         </tr>
-
 
 
         <thead>

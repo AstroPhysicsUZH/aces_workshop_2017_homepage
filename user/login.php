@@ -94,12 +94,12 @@ if (isset($_POST["op"]) || isset($_GET["op"])){
         $headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
         $headers .= 'Delivery-Date: ' . date("r") . "\r\n";
 
-        $subject = "11th LISA Symposium Access Key [{$p->id}]";
+        $subject = $confEmailKey . " Access Key [{$p->id}]";
 
         $message = preg_replace('~\R~u', "\r\n",  # make sure we have RFC 5322 linebreaks
 "Dear Mrs/Mr {$p->lastname}
 
-Someone reset your access key:
+Someone reset your access key.
 Your new access key is: {$akey}
 
 Kind regards,

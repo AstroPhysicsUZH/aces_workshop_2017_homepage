@@ -8,7 +8,8 @@ $DEBUG = TRUE;
 $confTitle = "ACES Workshop";
 $confSubTitle = "Fundamental and applied science with clocks and cold atoms in space";
 
-$confShortTitle = "ACES Workshop Zurich 2017 ";
+$confShortTitle = "ACES Workshop Zurich 2017";
+$confEmailKey = "[aces17]";  // we prefix all emails with this
 
 $confLocation = "University Zurich, Switzerland";
 $confDate = "June 29 &amp; 30, 2017";

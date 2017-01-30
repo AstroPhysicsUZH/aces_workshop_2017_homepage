@@ -17,12 +17,12 @@
     - use quotes in the email address! '"name" <email@inter.net>'
 **/
 
-$subject = "[aces17] ACES Workshop 2017 Registration ({$X["id"]})";
+$subject = $confEmailKey . " " . $confShortTitle . Registration ({$X["id"]})";
 $message = preg_replace('~\R~u', "\r\n",  # make sure we have RFC 5322 linebreaks
 
 "Dear Mrs/Mr {$X["lastname"]}
 
-Thank you very much for your registration for the ACES workshop 2017 in Zurich.
+Thank you very much for your registration for the $confShortTitle at $confLocation in $confDate.
 
 You can login into the user center with your email address and access key:
 $BASEURL/user/

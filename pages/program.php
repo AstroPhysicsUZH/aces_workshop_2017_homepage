@@ -3,8 +3,9 @@
 
 <h2>Preliminary Speakers</h2>
 <ul>
-    <li>Peter Wolf (Syrte Paris)</li>
+    <li>Peter Wolf (Syrte Paris, France)</li>
     <li>Luigi Cacciapuoti (ESA)</li>
-    <li>Christophe Salomon (Laboratoire Kastler Ecole Normale Superieure -Paris)</li>
-    <li>Manuel Rodriguez (ONERA, Palaiseau)</li>
+    <li>Christophe Salomon (Laboratoire Kastler Ecole Normale Superieure - Paris, France)</li>
+    <li>Manuel Rodriguez (ONERA, Palaiseau, France)</li>
+    <li>Claus Laemmerzahl (ZARM, Bremen, Germany)</li>
 </ul>

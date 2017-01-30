@@ -26,7 +26,7 @@ if (isset($_POST["op"]) || isset($_GET["op"])) {
         # log entry
         $dtstr = $now->format($datetime_db_fstr);
         $str = "$dtstr\t" . sprintf("u%03d", $_SESSION['uid']) . "\tuser updated submission";
-        $stmtstr .= ", notes = ('$str' || CHAR(13) || notes ) ";
+        $stmtstr .= ", log = ('$str' || CHAR(13) || log ) ";
 
         $stmtstr .= " WHERE id = :id;";
 
@@ -99,9 +99,9 @@ $( document ).ready(function(){
 
         var $first    = $('#firstname');
         var $last     = $('#lastname');
-		var $abstract = $('#abstract');
-		var $title    = $('#presentationTitle');
-		var $authors  = $('#coauthors');
+		var $abstract = $('#talkAbstract');
+		var $title    = $('#talkTitle');
+		var $authors  = $('#talkCoauthors');
         var $affil    = $("#affiliation");
 
 		var intercom = new Intercom();
@@ -158,32 +158,14 @@ $( document ).ready(function(){
 
             <tr>
                 <td>
-                    <input id="r1" type="radio" name="talkType"
-                        value="0" <?=($P["talkType"]==0?"checked":"")?>>
+                    <input type='hidden' value='0' name='wantsPresentTalk'>
+                    <input
+                        id="wantsPresentTalk" class="left" type="checkbox"
+                        name="wantsPresentTalk" value="1"
+                        <?= $P["wantsPresentTalk"] ? "checked" : "" ?> >
                 </td>
-                <td>
-                    <label for="r1">None</label>
-                </td>
+                <td><label for="wantsPresentTalk">Presenting a talk</label></td>
             </tr>
-            <tr>
-                <td>
-                    <input id="r3" type="radio" name="talkType"
-                        value="1" <?=($P["talkType"]==1?"checked":"")?>>
-                </td>
-                <td>
-                    <label for="r3">Talk</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input id="r2" type="radio" name="talkType"
-                        value="2" <?=($P["talkType"]==2?"checked":"")?>>
-                </td>
-                <td>
-                    <label for="r2">Poster</label>
-                </td>
-            </tr>
-
 
             <tr>
                 <td><label for="title" class="left">Title</label></td>
@@ -212,34 +194,34 @@ $( document ).ready(function(){
 
             <tr>
                 <td>
-                    <label for="presentationTitle" class="left">Titel</label>
+                    <label for="talkTitle" class="left">Titel</label>
                 </td>
                 <td>
-                    <input id="presentationTitle" type="text" name="presentationTitle" placeholder="Titel of Presentation"
-                    value="<?=$P["presentationTitle"]?>">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="coauthors" class="left">Co-Authors</label>
-                </td>
-                <td>
-                    <input id="coauthors" type="text" name="coauthors" placeholder="Last, First; Last, First; ..."
-                    value="<?=$P["coauthors"]?>">
+                    <input id="talkTitle" type="text" name="talkTitle" placeholder="Titel of Presentation"
+                    value="<?=$P["talkTitle"]?>">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="abstract" class="left">Abstract</label>
+                    <label for="talkCoauthors" class="left">Co-Authors</label>
                 </td>
                 <td>
-                    <textarea id="abstract" name="abstract"
+                    <input id="talkCoauthors" type="text" name="talkCoauthors" placeholder="Last, First; Last, First; ..."
+                    value="<?=$P["talkCoauthors"]?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="talkAbstract" class="left">Abstract</label>
+                </td>
+                <td>
+                    <textarea id="talkAbstract" name="talkAbstract"
                               style="height:10em;"
                               placeholder="Short abstract (max 200 words). You can use basic latex commands (MathJax), check the preview."
-                              ><?=$P["abstract"]?></textarea>
+                              ><?=$P["talkAbstract"]?></textarea>
                     <br />
                     <?php /* open popup and trigger initial update for datatransfer */ ?>
-                    <a href="preview.php"  style="font-size: 80%;" onclick="window.open('../preview.php', 'newwindow', 'width=400, height=600'); setTimeout(function() {$('#abstract').change()},500); return false;">open interactive preview (disable popup blocker)</a>
+                    <a href="preview.php"  style="font-size: 80%;" onclick="window.open('../preview.php', 'newwindow', 'width=400, height=600'); setTimeout(function() {$('#talkAbstract').change()},500); return false;">open interactive preview (disable popup blocker)</a>
                 </td>
             </tr>
 

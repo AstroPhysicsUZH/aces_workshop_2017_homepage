@@ -8,7 +8,8 @@ $DEBUG = TRUE;
 $confTitle = "ACES Workshop";
 $confSubTitle = "Fundamental and applied science with clocks and cold atoms in space";
 
-$confShortTitle = "ACES Workshop Zurich 2017 ";
+$confShortTitle = "ACES Workshop Zurich 2017";
+$confEmailKey = "[aces17]";  // we prefix all emails with this
 
 $confLocation = "University Zurich, Switzerland";
 $confDate = "June 29 &amp; 30, 2017";
@@ -141,7 +142,7 @@ $tableFields = array(
 // options
     'needsInet'   => ['INTEGER', 'boolean', FALSE], # people that don't have eduroam
     'nPersons'    => ['INTEGER', 'integer', 1], # total amount of people, incl accompaning.. >=1
-    'isVeggie'    => ['INTEGER', 'boolean', FALSE],
+    'nVeggies'    => ['INTEGER', 'integer', 0],
 #    'isImpaired' => ['INTEGER', 'boolean'],
 #    'lookingForRoomMate' => ['INTEGER', 'boolean'],
 

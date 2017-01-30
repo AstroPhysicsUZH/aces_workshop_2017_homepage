@@ -29,9 +29,9 @@ $( document ).ready(function(){
 
         var $first    = $('#firstname');
         var $last     = $('#lastname');
-        var $abstract = $('#abstract');
-        var $title    = $('#presentationTitle');
-        var $authors  = $('#coauthors');
+        var $abstract = $('#talkAbstract');
+        var $title    = $('#talkTitle');
+        var $authors  = $('#talkCoauthors');
         var $affil    = $("#affiliation");
 
         var intercom = new Intercom();
@@ -238,19 +238,19 @@ $( document ).ready(function(){
                     value="1" style="width:5em;height:2em;text-align:center;" min="0" max="5">
             </td>
             <td>
-                <label for="nPersons">Total persons</label>
+                <label for="nPersons">Total persons (including yourself)</label>
             </td>
         </tr>
         <tr>
             <td>
-                <input type="hidden" name="isVeggie" value="FALSE">
-                <input id="isVeggie" class="left" type="checkbox" name="isVeggie" value="TRUE">
+                <input id="nVeggies"
+                    class="left" type="number" name="nVeggies"
+                    value="0" style="width:5em;height:2em;text-align:center;" min="0" max="5">
             </td>
             <td>
-                <label for="isVeggie">Vegetarian meal</label>
+                <label for="nVeggies">Vegetarian meals</label>
             </td>
         </tr>
-
 
 
         <thead>

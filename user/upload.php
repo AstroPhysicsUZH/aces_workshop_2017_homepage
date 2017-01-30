@@ -85,7 +85,7 @@ require "lib/menu.php";
 
     <p>
         Please upload a draft / testing version with your special fonts and videos
-        by Friday, 2nd Sept. for testing purposes.
+        a few days before the conference for testing purposes.
         <br>
         The final presentation to be shown can be uploaded up to 5min before your talk starts.
         <br>

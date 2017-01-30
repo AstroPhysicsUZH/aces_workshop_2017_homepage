@@ -140,23 +140,38 @@ require "lib/menu.php";
             </tr>
             <tr>
                 <td>
-                    <input type='hidden' value='0' name='needInet'>
+                    <input type='hidden' value='0' name='needsInet'>
                     <input
-                        id="needInet" class="left" type="checkbox"
-                        name="needInet" value="1"
-                        <?= $P["needInet"] ? "checked" : "" ?> >
+                        id="needsInet" class="left" type="checkbox"
+                        name="needsInet" value="1"
+                        <?= $P["needsInet"] ? "checked" : "" ?> >
                 </td>
-                <td><label for="needInet">Need WIFI access</label></td>
+                <td><label for="needsInet">Need WIFI access</label></td>
             </tr>
 
             <tr>
                 <td>
-                    <input type='hidden' value='0' name='isVeggie'>
-                    <input id="c1" class="left" type="checkbox"
-                        name="isVeggie" value="1"
-                        <?= $P["isVeggie"] ? "checked" : "" ?> >
+                    <input id="nPersons"
+                        class="left" type="number" name="nPersons"
+                        value="<?=$P["nPersons"]?>"
+                        style="width:5em;height:2em;text-align:center;"
+                        min="0" max="5">
                 </td>
-                <td><label for="c1">Vegetarian meal</label></td>
+                <td>
+                    <label for="nPersons">Total persons (including yourself) for meal</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="nVeggies"
+                        class="left" type="number" name="nVeggies"
+                        value="<?=$P["nVeggies"]?>"
+                        style="width:5em;height:2em;text-align:center;"
+                        min="0" max="5">
+                </td>
+                <td>
+                    <label for="nVeggies">Vegetarian meals</label>
+                </td>
             </tr>
 <?php /*
             <tr>

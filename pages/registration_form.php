@@ -243,12 +243,12 @@ $( document ).ready(function(){
         </tr>
         <tr>
             <td>
-                <input id="nVeggie"
-                    class="left" type="number" name="nVeggie"
+                <input id="nVeggies"
+                    class="left" type="number" name="nVeggies"
                     value="0" style="width:5em;height:2em;text-align:center;" min="0" max="5">
             </td>
             <td>
-                <label for="nVeggie">Vegetarian meals</label>
+                <label for="nVeggies">Vegetarian meals</label>
             </td>
         </tr>
 

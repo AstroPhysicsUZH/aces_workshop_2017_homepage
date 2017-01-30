@@ -29,9 +29,9 @@ $( document ).ready(function(){
 
         var $first    = $('#firstname');
         var $last     = $('#lastname');
-        var $abstract = $('#abstract');
-        var $title    = $('#presentationTitle');
-        var $authors  = $('#coauthors');
+        var $abstract = $('#talkAbstract');
+        var $title    = $('#talkTitle');
+        var $authors  = $('#talkCoauthors');
         var $affil    = $("#affiliation");
 
         var intercom = new Intercom();

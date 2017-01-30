@@ -28,7 +28,7 @@ if (isset($_POST["op"]) || isset($_GET["op"])) {
         # log entry
         $dtstr = $now->format($datetime_db_fstr);
         $str = "$dtstr\t" . sprintf("u%03d", $_SESSION['uid']) . "\tuser updated personal details";
-        $stmtstr .= ", notes = ('$str' || CHAR(13) || notes ) ";
+        $stmtstr .= ", log = ('$str' || CHAR(13) || log ) ";
 
         $stmtstr .= " WHERE id = :id;";
 
@@ -158,6 +158,7 @@ require "lib/menu.php";
                 </td>
                 <td><label for="c1">Vegetarian meal</label></td>
             </tr>
+<?php /*
             <tr>
                 <td>
                     <input type='hidden' value='0' name='isImpaired'>
@@ -179,6 +180,7 @@ require "lib/menu.php";
                 </td>
                 <td><label for="lookingForRoomMate">looking for roommates</label></td>
             </tr>
+*/ ?>
         </table>
         <input type="hidden" name="op" value="edit_user"/>
         <input type="submit" value="Save changes" />

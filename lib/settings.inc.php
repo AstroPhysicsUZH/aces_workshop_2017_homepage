@@ -6,7 +6,7 @@
 $DEBUG = TRUE;
 
 $confTitle = "ACES Workshop";
-$confSubTitle = "Fundamental and applied science with clocks and cold atoms in space";
+$confSubTitle = "Fundamental and applied science <br /> with clocks and cold atoms in space";
 
 $confShortTitle = "ACES Workshop Zurich 2017";
 $confEmailKey = "[aces17]";  // we prefix all emails with this
@@ -51,7 +51,7 @@ $PAGES = array(
     grayed out, because not implemented
 */
 $NOT_IMPLEMENTED_PAGES = array(
-    'participants',
+#    'participants',
     'login',
 );
 

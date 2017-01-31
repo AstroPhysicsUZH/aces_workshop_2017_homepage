@@ -12,7 +12,7 @@ try {
 
     // Create table
     // -------------------------------------------------------------------------
-    $style1 = " style='border: 0px solid black; width: 4em;'";
+    $style1 = " style='border: 0px solid black; width: 4em; text-align: right;'";
     $style2 = " style='border: 0px solid black;'";
     echo "<table{$style2}>\n";
 

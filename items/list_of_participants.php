@@ -14,22 +14,23 @@ try {
     // -------------------------------------------------------------------------
     $style1 = " style='border: 0px solid black; width: 4em;'";
     $style2 = " style='border: 0px solid black;'";
-    echo "<table{$style2}'>\n";
+    echo "<table{$style2}>\n";
 
     // Select all data from memory db messages table
-    $result = $db->query("SELECT * FROM {$tableName} WHERE hasPayed=1 ORDER BY LOWER(lastname) ASC, firstname ASC;", PDO::FETCH_ASSOC);
+    #$result = $db->query("SELECT * FROM {$tableName} WHERE hasPayed=1 ORDER BY LOWER(lastname) ASC, firstname ASC;", PDO::FETCH_ASSOC);
+    $result = $db->query("SELECT * FROM {$tableName} ORDER BY LOWER(lastname) ASC, firstname ASC;", PDO::FETCH_ASSOC);
 
     echo "  <tbody>\n";
     foreach($result as $r) {
         echo "    <tr>\n";
-        echo "      <td{$style1}>".nl2br(htmlentities($r['title'],FALSE))."</td>\n";
+        echo "      <td class='small'{$style1}>".nl2br(htmlentities($r['title'],FALSE))."</td>\n";
         echo "      <td{$style2}>".nl2br(htmlentities($r['firstname'], FALSE))." ";
         echo " ".nl2br(htmlentities($r['lastname'], FALSE))."</td>\n";
-        echo "      <td{$style2}> (".nl2br(htmlentities($r['affiliation'], FALSE)).")</td>\n";
+        echo "      <td class='small'{$style2}> (".nl2br(htmlentities($r['affiliation'], FALSE)).")</td>\n";
         echo "    </tr>\n";
     }
     echo "  </tbody>\n</table>\n";
-    echo "</body></html>\n";
+#    echo "</body></html>\n";
 
     // Close file db connection
     // -------------------------------------------------------------------------

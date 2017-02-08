@@ -8,4 +8,5 @@
     <li>Christophe Salomon (Laboratoire Kastler Ecole Normale Superieure - Paris, France)</li>
     <li>Manuel Rodriguez (ONERA, Palaiseau, France)</li>
     <li>Claus Laemmerzahl (ZARM, Bremen, Germany)</li>
+    <li>Jun Ye (JILA, University of Colorado Boulder, USA)</li>
 </ul>

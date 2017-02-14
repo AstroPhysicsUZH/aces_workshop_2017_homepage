@@ -9,4 +9,5 @@
     <li>Manuel Rodriguez (ONERA, Palaiseau, France)</li>
     <li>Claus Laemmerzahl (ZARM, Bremen, Germany)</li>
     <li>Jun Ye (JILA, University of Colorado Boulder, USA)</li>
+    <li>Jakob Flury (IFE, Leibniz University, Hanover, Germany)</li>
 </ul>

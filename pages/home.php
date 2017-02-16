@@ -40,7 +40,7 @@
         <span class='small datetime'>
             <?=$dateConferenceDinner->format($datetime_fstr)?>
         </span>
-        Conference Dinner
+        Conference Dinner in <a href="http://www.lasalle-restaurant.ch/en/restaurant/">LaSalle, Zurich</a>
     </li>
     <li>
         <span class='small datetime'>

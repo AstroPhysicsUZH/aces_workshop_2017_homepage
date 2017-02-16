@@ -10,4 +10,5 @@
     <li>Claus Laemmerzahl (ZARM, Bremen, Germany)</li>
     <li>Jun Ye (JILA, University of Colorado Boulder, USA)</li>
     <li>Jakob Flury (IFE, Leibniz University, Hanover, Germany)</li>
+    <li>Harald Schnatz (PTB, Braunschweig, Germany)</li>
 </ul>

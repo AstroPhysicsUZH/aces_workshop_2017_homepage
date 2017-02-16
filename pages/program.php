@@ -12,3 +12,8 @@
     <li>Jakob Flury (IFE, Leibniz University, Hanover, Germany)</li>
     <li>Harald Schnatz (PTB, Braunschweig, Germany)</li>
 </ul>
+
+<h2>Conference Dinner</h2>
+<p>
+    The dinner will take place in <a href="http://www.lasalle-restaurant.ch/en/restaurant/">LaSalle, Zurich</a>.
+</p>

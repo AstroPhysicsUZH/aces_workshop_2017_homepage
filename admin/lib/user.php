@@ -74,7 +74,7 @@
 
 			// You'll probably want to change this to something sensible. If your site is
 			// www.sockmonkey.com, then you want this to be "sockmonkey.com"
-			const DOMAIN_NAME = "Lisa2016Conference";
+			const DOMAIN_NAME = "ACES2017";
 
 			// This is going to be the "from" address
 			const MAILER_NAME = "relativitiyUZH@gmail.com";

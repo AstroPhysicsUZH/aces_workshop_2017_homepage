@@ -12,9 +12,12 @@
     command line
 **/
 
+require_once "lib/headerphp.php";
+
+
 echo "creating new file\n";
 $outp = "";
-exec('sqlite3 ../db/registration.sqlite3 ".databases" 2>&1', $outp, $retval);
+exec('sqlite3 '.$db_path_rel.' ".databases" 2>&1', $outp, $retval);
 var_dump($outp);
 
 require_once "../lib/app.php";

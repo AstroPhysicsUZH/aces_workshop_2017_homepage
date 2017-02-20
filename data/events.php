@@ -8,6 +8,8 @@
  */
 
 
+
+/*
 $stmtstr = "SELECT * FROM {$sessionsTable}";
 $sessions = $db->query( $stmtstr )->fetchAll(PDO::FETCH_OBJ);
 
@@ -19,7 +21,9 @@ foreach($sessions as $s) {
 }
 #print_r($sessions);
 #print $plenary_sid;
+*/
 
+/* OUTDATED
 $stmtstr = "SELECT
                 id, title, firstname, lastname, email, affiliation,
                 talkType, presentationTitle, coauthors, abstract, presentationCategories,
@@ -34,6 +38,8 @@ $stmtstr = "SELECT
 
 $presentations = $db->query( $stmtstr )->fetchAll(PDO::FETCH_OBJ);
 
+
+
 $stmtstr = "SELECT
                 id, title, firstname, lastname, email, affiliation,
                 talkType, presentationTitle, coauthors, abstract, presentationCategories,
@@ -46,17 +52,21 @@ $stmtstr = "SELECT
 
 $posters = $db->query( $stmtstr )->fetchAll(PDO::FETCH_OBJ);
 
+*/
+
 $stmtstr = "SELECT
                 id, title, firstname, lastname, email, affiliation,
-                talkType, presentationTitle, coauthors, abstract, presentationCategories,
-                assignedSession, isPresentationAccepted, acceptedType,
-                presentationSlot, presentationDuration
+                talkTitle, talkCoauthors, talkAbstract,
+                isTalkChecked, isTalkAccepted, talkSlot
             FROM {$tableName}
-            WHERE talkType>0;" ;
+            WHERE wantsPresentTalk=1;
+            ORDER BY lastname ASC;" ;
 
-$all_submissions = $db->query( $stmtstr )->fetchAll(PDO::FETCH_OBJ);
+$talkSubmissions = $db->query( $stmtstr )->fetchAll(PDO::FETCH_OBJ);
 
 
+
+/*
 $chairs_ = [
     '2016-09-05T08:00:00' => "M. Colpi",
     '2016-09-05T13:30:00' => "O. Jennrich",
@@ -77,15 +87,19 @@ $chairs = [];
 foreach($chairs_ as $date =>$chair) {
     $chairs[] = ['date'=>new DateTime($date),'chair'=>$chair];
 }
+*/
 
+
+
+/*
 # group by day
-foreach($presentations as $p) {
+foreach($talks as $p) {
     #print_r($p);
 
     $p->name = substr($p->firstname,0,1) . ". " . $p->lastname;
-    $p->start = new DateTime($p->presentationSlot);
+    $p->start = new DateTime($p->talkSlot);
     try {
-        $dur = new DateInterval('PT'.$p->presentationDuration.'M');
+        $dur = new DateInterval('PT'.$p->talkDuration.'M');
     }
     catch (Exception $e) {
         $dur = new DateInterval('PT'.'15'.'M');
@@ -185,5 +199,5 @@ foreach ($specialevents as $se) {
     $se->is_special = TRUE;
     $se->is_no_talk = TRUE;
 }
-
+*/
 ?>

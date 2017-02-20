@@ -205,9 +205,9 @@ iframe,
 code {
     display: inline-block;
     font-family: monospace;
-    margin-left: 2em;
+    /*margin-left: 2em;
     border-left: 2px solid black;
-    padding-left: 1em;
+    padding-left: 1em;*/
 }
 
 .nolink,
@@ -638,6 +638,10 @@ h4.chair {
     padding: 1em 0 0 1em;
     font-size: 100%;
     text-align: center;
+}
+
+.italic {
+    font-style: italic;
 }
 
 

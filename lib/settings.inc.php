@@ -102,8 +102,11 @@ $logfile     = "../events.log";
 $loggile_abs = "events.log";
 
 // name of the sqlite database (mysql should work as well, thanks to PDO, but is not tested)
-$db_address     = 'sqlite:../db/registration.sqlite3';
-$db_address_abs = 'sqlite:db/registration.sqlite3';
+$db_path        = 'db/registration.sqlite3';
+
+$db_path_rel    = '../'.$db_path;
+$db_address     = 'sqlite:' . $db_path_rel;
+$db_address_abs = 'sqlite:' . $db_path;
 
 // the table in the database to use
 $tableName = "registrationTable";
@@ -160,6 +163,8 @@ $tableFields = array(
 
     'isTalkChecked'  => ['INTEGER', 'boolean', FALSE],  # has it been considered / looked at, and descision shall be published
     'isTalkAccepted' => ['INTEGER', 'boolean', FALSE], # ... the desicission. Only valid if isTalkChecked=True
+    'talkSlot' => ['TEXT', 'date'],             # which timeslot, as a date
+    'talkDuration' => ['INTEGER', 'integer'],   # duration of talk, in mins
 
 /*
     'talkType' => ['INTEGER', 'choice', ['none', 'talk', 'poster']],

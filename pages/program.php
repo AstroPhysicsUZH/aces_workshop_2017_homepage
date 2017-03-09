@@ -1,10 +1,18 @@
 
 <h1>Programme</h1>
 
+<style>
+li { margin-bottom: 0.5em; }
+</style>
+
 <h2>Preliminary Speakers</h2>
 <ul>
     <li>Peter Wolf (Syrte Paris, France)</li>
-    <li>Luigi Cacciapuoti (ESA)</li>
+    <li>
+        Luigi Cacciapuoti (ESA)
+        <br />
+        <i>ACES Mission Status</i>
+    </li>
     <li>Christophe Salomon (Laboratoire Kastler Ecole Normale Superieure - Paris, France)</li>
     <li>Manuel Rodriguez (ONERA, Palaiseau, France)</li>
     <li>Claus Laemmerzahl (ZARM, Bremen, Germany)</li>

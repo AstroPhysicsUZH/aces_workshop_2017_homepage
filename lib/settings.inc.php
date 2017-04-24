@@ -105,7 +105,7 @@ $loggile_abs = "events.log";
 $db_path        = 'db/registration.sqlite3';
 
 $db_path_rel    = '../'.$db_path;
-$db_address     = 'sqlite:' . $db_path_rel;
+$db_address_rel = 'sqlite:' . $db_path_rel;
 $db_address_abs = 'sqlite:' . $db_path;
 
 // the table in the database to use

@@ -513,22 +513,23 @@ ul.speakers span.affiliation {
     font-style: italic;
 }
 
-ul.speakers a.title {
+ul.speakers span.talkTitle {
     font-weight: bold;
     display: block;
+    margin-top: 0.2em;
 }
 
-ul.speakers a.title.linked {
+ul.speakers a.linked {
     color: #008;
 }
 
-ul.speakers a.title.linked:hover {
+ul.speakers a.linked:hover {
     color: #00f;
     text-decoration: underline;
     cursor: pointer;
 }
 
-ul.speakers div.modal_abstract {
+div.speakers_abstracts div.modal_abstract {
     clear:both;
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -543,7 +544,7 @@ ul.speakers div.modal_abstract {
     background-color: rgba(0,0,0,0.66); /* Black w/ opacity */
 }
 
-ul.speakers div.modal_abstract .container {
+div.speakers_abstracts div.modal_abstract .container {
     position: fixed;
     transform: translate(0, -50%);
     top: 50%;
@@ -563,28 +564,28 @@ ul.speakers div.modal_abstract .container {
     overflow: auto;
 }
 
-ul.speakers div.modal_abstract .close {
+div.speakers_abstracts div.modal_abstract .close {
     color: #ffaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-ul.speakers div.modal_abstract .close:hover,
-ul.speakers div.modal_abstract .close:focus {
+div.speakers_abstracts div.modal_abstract .close:hover,
+div.speakers_abstracts div.modal_abstract .close:focus {
     color: #ff3333;
     text-decoration: none;
     cursor: pointer;
 }
 
-ul.speakers .mod_name {
+div.speakers_abstracts .mod_name {
     display: block;
 }
-ul.speakers .mod_aff {
+div.speakers_abstracts .mod_aff {
     display: block;
     font-size: 75%;
     font-style: italic;
 }
-ul.speakers .mod_title {
+div.speakers_abstracts .mod_title {
     display: block;
     font-weight: bold;
     padding: 0.5em 0 1em 0;
@@ -651,10 +652,6 @@ ul.prog li {
     color: #888;
 }
 
-.title {
-    font-style: italic;
-}
-
 
 .prog ul {
     list-style-type: none;
@@ -689,6 +686,22 @@ img.icon {
 */
 
 
+table.participantstable {
+    border: 0px solid black;
+}
+
+table.participantstable td {
+    border: 0px solid black;
+}
+
+table.participantstable td.small {
+
+}
+
+table.participantstable td.title {
+    width: 4em;
+    text-align: right;
+}
 
 
 @media only screen and (min-width:600px) {
@@ -709,11 +722,10 @@ img.icon {
         min-height: 20em; /* make it bitter than the menu */
     }
 
-    ul.speakers div.modal_abstract .container {
+    div.speakers_abstracts div.modal_abstract .container {
         left: auto;
         right: 10%;
-
-        width: 40%;
+        width: 50%;
     }
 
 }
@@ -775,7 +787,7 @@ img.icon {
     }
 
 
-    ul.speakers div.modal_abstract {
+    div.speakers_abstracts div.modal_abstract {
         display: block;
         position: static;
         background-color: white;
@@ -783,7 +795,7 @@ img.icon {
         width: auto;
 
     }
-    ul.speakers div.modal_abstract .container {
+    div.speakers_abstracts div.modal_abstract .container {
         display: block;
         position: static;
         transform: none;
@@ -793,10 +805,10 @@ img.icon {
         margin: 0.25em 0.25em 0.25em 2em;
         font-size: 80%;
     }
-    ul.speakers div.modal_abstract .close,
-    ul.speakers .mod_name,
-    ul.speakers .mod_aff,
-    ul.speakers .mod_title {
+    div.speakers_abstracts div.modal_abstract .close,
+    div.speakers_abstracts .mod_name,
+    div.speakers_abstracts .mod_aff,
+    div.speakers_abstracts .mod_title {
         display: none;
     }
 }

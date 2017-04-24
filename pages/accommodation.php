@@ -3,7 +3,9 @@
 
 <p>
   We recommend the following hotels.<br>
-  For more choice consult <a href="https://www.zuerich.com/en/visit/accommodation-hotel-bed-and-breakfast-hostel"> the webpage of Zurich tourism</a>.
+  For more choice consult
+  <a href="http://www.rafik.ch">the</a>
+  <a href="https://www.zuerich.com/en/visit/accommodation-hotel-bed-and-breakfast-hostel"> webpage of Zurich tourism</a>.
 </p>
 
 <p class="warning">

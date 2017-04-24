@@ -81,32 +81,6 @@ function csv_to_array($filename = '', $delimiter = ',')
     return $data;
 };
 
-/**
-    function to open a database handle (using PDO)
-**/
-function open_db($dba = NULL) {
-
-    global $db_address;
-    if (! $dba){ $dba = $db_address; }
-    $db = NULL;
-
-    try {
-        // Create (connect to) SQLite database in file
-        $db = new PDO($dba);
-        // Set errormode to exceptions
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch(PDOException $e) {
-        // Print PDOException message
-        echo $e->getMessage();
-        echo '<br />';
-        var_dump($e->getTraceAsString());
-
-        die(1);
-    }
-    return $db;
-}
-
 
 /**
  * Check if a table exists in the current database.

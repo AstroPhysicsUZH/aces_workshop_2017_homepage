@@ -31,14 +31,6 @@
 <h3>Public Transports</h3>
 
 <p>
-  Zurich has a <a href="http://www.zvv.ch/zvv/en/home.html">unified public transport system (ZVV)</a>:
-  one ticket is valid for all means of transportation like trains, busses, trams, trolleys and ships.
-  Your conference fee includes a city zone ticket that is valid from Monday to Friday (no airport transfer).
-  Please print it out and carry it on you all the time.
-</p>
-
-
-<p>
   Zurich has a <a href="http://www.zvv.ch/zvv/en/home.html">unified public transport system (ZVV)</a>: one ticket is valid for all means of transportation like trains, busses, trams, trolleys and ships.
   Please make sure to get a ticket <b>before</b> entering the vehicle.
   Tickets can be bought at every stops (using Swiss Francs or Debit Card).
@@ -84,5 +76,5 @@
   There is a carpark at Irchel, but expect to pay CHF [parking_duration_in_hours + 1].
   Finding parking spots in the city is only for the brave, but some hotel offer parking places.
   <br />
-  <a href="https://www.zuerich.com/en/visit/parking-zurich">Further information.</a>
+  <a href="http://www.rafik.ch">Further </a><a href="https://www.zuerich.com/en/visit/parking-zurich">information.</a>
 </p>

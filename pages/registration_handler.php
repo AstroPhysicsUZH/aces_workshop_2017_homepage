@@ -1,9 +1,6 @@
 <?php
 
-if (!$appIsLoaded) {
-    require_once "../lib/app.php";
-    require_once "../lib/emails.inc.php";
-}
+require_once "../lib/app.php";
 
 $BASEURL = dirname(dirname(get_baseurl()));
 
@@ -146,6 +143,7 @@ if (!empty($_POST)) {
         $stmt->execute([':uid' => $lastId]);
         $data = $stmt->fetch();
 
+        _load_mailer();
         send_registration_email($data, $BASEURL);
 
         echo "<h1 style='text-align:center;'>Registration successful</h1>\n";

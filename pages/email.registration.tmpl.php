@@ -24,7 +24,7 @@ $message = preg_replace('~\R~u', "\r\n",  # make sure we have RFC 5322 linebreak
 
 "Dear Mrs/Mr {$X["lastname"]}
 
-Thank you very much for your registration for the $confShortTitle at $confLocation in $confDate.
+Thank you very much for your registration for the $confShortTitle at $confLocation from $confDate.
 
 You can login into the user center with your email address and access key:
 $BASEURL/user/

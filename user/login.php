@@ -61,7 +61,7 @@ if (isset($_POST["op"]) || isset($_GET["op"])){
         }
         $email = $_POST["email"];
 
-        $db = open_db($db_address);
+        $db = open_db();
         $stmt = $db->prepare("SELECT * FROM {$tableName} WHERE email = :email" );
         $stmt->bindParam(":email", $email);
         $res = $stmt->execute();

@@ -7,6 +7,8 @@ function P($var) { return htmlentities($var); }
 /* Shorthand to print a bool from the database ("1" -> TRUE, otherwise false) */
 function B($var) { return $var==="1"? "yes":"no"; }
 
+/* add newlines, for printing to sourcecode using <?=N($data)?> */
+function N($v) {return $v . "\n";}
 
 function print_menu($active_page)
 {
@@ -32,7 +34,12 @@ function print_menu($active_page)
         }
 
         echo "    <li class='" . implode(',', $classes) . "'>\n";
-        echo "        <a href='?page=$page_id'>$page_title</a></li>\n";
+        if ($page_id[0]=="!"){
+            $lnk = substr($page_id,1);
+            echo "        <a href='$lnk'>$page_title</a></li>\n";
+        } else {
+            echo "        <a href='?page=$page_id'>$page_title</a></li>\n";
+        }
     }
     echo <<<HTML
     </ul>

@@ -1,8 +1,9 @@
 <?php
 
-require_once "lib/db.inc.php";
+require_once "lib/app.php";
 
-$participants = get_participants();
+$db = open_db();
+$participants = get_participants($db);
 ?>
 
 <h1>Participants</h1>

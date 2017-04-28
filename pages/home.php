@@ -13,38 +13,38 @@
 <ul>
     <li>
         <span class='small datetime'>
-            <?=$dateRegistrationOpens->format($datetime_fstr)?>
+            <?=$dateRegistrationOpens->format($datetime_fstr)."\n"?>
         </span>
         Registration Opens
     </li>
     <li>
         <span class='small datetime'>
-            <?=$dateAbstractSubmissionDeadline->format($datetime_fstr)?>
+            <?=$dateAbstractSubmissionDeadline->format($datetime_fstr)."\n"?>
         </span>
         Deadline for abstract submission
     </li>
     <li>
         <span class='small datetime'>
-            <?=$dateRegistrationDeadline->format($datetime_fstr)?>
+            <?=$dateRegistrationDeadline->format($datetime_fstr)."\n"?>
         </span>
         Registration closes
     </li>
 
     <li>
         <span class='small datetime'>
-            <?=$dateConferenceStarts->format($datetime_fstr)?>
+            <?=$dateConferenceStarts->format($datetime_fstr)."\n"?>
         </span>
         Conference Starts
     </li>
     <li>
         <span class='small datetime'>
-            <?=$dateConferenceDinner->format($datetime_fstr)?>
+            <?=$dateConferenceDinner->format($datetime_fstr)."\n"?>
         </span>
         Conference Dinner in <a href="http://www.lasalle-restaurant.ch/en/restaurant/">LaSalle, Zurich</a>
     </li>
     <li>
         <span class='small datetime'>
-            <?=$dateConferenceEnds->format($datetime_fstr)?>
+            <?=$dateConferenceEnds->format($datetime_fstr)."\n"?>
         </span>
         Conference Closes
     </li>

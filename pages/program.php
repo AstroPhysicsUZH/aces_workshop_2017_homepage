@@ -1,6 +1,6 @@
 <?php
 
-require_once "lib/db.inc.php";
+require_once "lib/app.php";
 
 
 $reg_spkrs_ids = [
@@ -40,8 +40,10 @@ $miss_spkrs = [
 
 $speakers = [];
 
+$db = open_db();
+
 foreach ($reg_spkrs_ids as $id) {
-    $p = get_participant_id($id);
+    $p = get_participant_id($db, $id);
     $key = $p['lastname'] . $p['firstname'];
     $speakers[$key] = $p;
 }

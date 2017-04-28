@@ -30,8 +30,8 @@ $date_fstr = 'Y-m-d';               // how to present dates only
 
     for each of this entries there must be a php file in root
     This php there is supposed to inlcude "items" to generate a page
+    preceed php filename with ! for direct link
 */
-
 $PAGES = array(
 #   id and php filename     title
     array('home',          'home'),
@@ -43,7 +43,7 @@ $PAGES = array(
     array('transportation','transportation'),
 #    array('q_and_a',       'Q & A'),
 #    array('proceedings',   'proceedings'),
-    array('login',         'login'),
+    array('!user/',        'User Area'),
 );
 
 /*
@@ -52,7 +52,7 @@ $PAGES = array(
 */
 $NOT_IMPLEMENTED_PAGES = array(
 #    'participants',
-    'login',
+#    'login',
 );
 
 
@@ -101,12 +101,13 @@ $dateConferenceDinner  = new DateTime("2017-06-29 19:00:00");
 $logfile     = "../events.log";
 $loggile_abs = "events.log";
 
-// name of the sqlite database (mysql should work as well, thanks to PDO, but is not tested)
+// name of the sqlite database (mysql won't work, fix db.inc.php)
 $db_path        = 'db/registration.sqlite3';
+$db_proto       = 'sqlite:';
 
-$db_path_rel    = '../'.$db_path;
-$db_address_rel = 'sqlite:' . $db_path_rel;
-$db_address_abs = 'sqlite:' . $db_path;
+#$db_path_rel    = '../'.$db_path;
+#$db_address_rel = 'sqlite:' . $db_path_rel;
+#$db_address_abs = 'sqlite:' . $db_path;
 
 // the table in the database to use
 $tableName = "registrationTable";

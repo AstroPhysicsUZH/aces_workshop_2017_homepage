@@ -83,11 +83,11 @@ $feeDinnerRegular  = 100; // the price of the dinner, per person
 $dateRegistrationOpens          = new DateTime("2017-01-01 00:00:00"); // the date when early booking is over
 #$dateReducedFeeDeadline         = new DateTime("2016-07-31 23:59:59"); // the date when early booking is over
 $dateReducedFeeDeadline         = $dateRegistrationOpens;
-$dateAbstractSubmissionDeadline = new DateTime("2017-05-15 23:59:59");
-$dateRegistrationDeadline       = new DateTime("2017-05-30 23:59:59"); // the date when booking is over
+$dateAbstractSubmissionDeadline = new DateTime("2017-05-31 23:59:59");
+$dateRegistrationDeadline       = new DateTime("2017-06-04 23:59:59"); // the date when booking is over
 
 $dateConferenceStarts  = new DateTime("2017-06-29 00:00:00");
-$dateConferenceEnds    = new DateTime("2017-06-30 23:59:59");
+$dateConferenceEnds    = new DateTime("2017-06-30 16:00:00");
 
 $dateConferenceDinner  = new DateTime("2017-06-29 19:00:00");
 

@@ -7,10 +7,17 @@ $reg_spkrs_ids = [
     18, # Peter Wolf
     12, # Luigi Cacciapuoti
     4,  # Christophe Salomon
-    25, # Flury', 'Jacob
+    25, # Flury', 'Jacob.
+    32, # Rodrigues, Manuel
 ];
 
 $miss_spkrs = [
+    [
+        'Guerlin', 'Christine',
+        'Pierre and Marie Curie University, Paris, France',
+        '',
+        ''
+    ],
     [
         'Laemmerzahl', 'Claus',
         'ZARM, Bremen, Germany',
@@ -23,12 +30,6 @@ $miss_spkrs = [
         '',
         ''
     ],
-#    [
-#        'Flury', 'Jacob',
-#        'IFE, Leibniz University, Hanover, Germany',
-#        '',
-#        ''
-#    ],
     [
         'Schnatz', 'Harald',
         'PTB, Braunschweig, Germany',

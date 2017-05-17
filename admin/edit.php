@@ -33,7 +33,7 @@ if (!empty($_POST)) {
             # log entry
             $dtstr = $now->format($datetime_db_fstr);
             $str = "$dtstr\t{$_SESSION["username"]}\tupdate entry";
-            $stmtstr .= ", notes = ('$str' || CHAR(13) || notes ) ";
+            $stmtstr .= ", log = ('$str' || CHAR(13) || log ) ";
 
             $stmtstr .= " WHERE id = :id;";
 
@@ -103,8 +103,6 @@ if (array_key_exists('id', $_GET)):
     $stmt->bindParam(":id", $ID);
     $stmt->execute();
     $p = $stmt->fetch(PDO::FETCH_OBJ);
-
-    $all_sessions = $db->query( "SELECT * FROM {$sessionsTable}")->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <form id="frm_edit"
@@ -164,13 +162,13 @@ if (array_key_exists('id', $_GET)):
         </tr>
         <tr>
             <td>
-                <input type='hidden' value='0' name='needInet'>
+                <input type='hidden' value='0' name='needsInet'>
                 <input
-                    id="needInet" class="left" type="checkbox"
-                    name="needInet" value="1"
-                    <?= $p->needInet ? "checked" : "" ?> >
+                    id="needsInet" class="left" type="checkbox"
+                    name="needsInet" value="1"
+                    <?= $p->needsInet ? "checked" : "" ?> >
             </td>
-            <td><label for="needInet">Need WIFI</label></td>
+            <td><label for="needsInet">needsInet</label></td>
         </tr>
         <tr class='topborder'>
             <td>
@@ -184,130 +182,66 @@ if (array_key_exists('id', $_GET)):
         </tr>
 
         <tr class='topborder'>
-            <td><label for="talkType" class="left">requested Talk Type</label></td>
             <td>
-                <input id="talkType"
-                    type="text" name="talkType" placeholder="talktype 0:none, 1:talk, 2:poster"
-                    value="<?=$p->talkType?>">
+                <input type='hidden' value='0' name='wantsPresentTalk'>
+                <input
+                    id="wantsPresentTalk" class="left" type="checkbox"
+                    name="wantsPresentTalk" value="1"
+                    <?= $p->wantsPresentTalk ? "checked" : "" ?> >
+            </td>
+            <td><label for="wantsPresentTalk">wantsPresentTalk</label></td>
+        </tr>
+        <tr>
+            <td><label for="talkTitle" class="left">talkTitle</label></td>
+            <td>
+                <input type="talkTitle" name="talkTitle" required placeholder="talkTitle"  value="<?=$p->talkTitle?>">
             </td>
         </tr>
         <tr>
-            <td><label for="acceptedType" class="left">accepted Talk Type</label></td>
+            <td><label for="talkCoauthors" class="left">talkCoauthors</label></td>
             <td>
-                <input id="acceptedType"
-                    type="text" name="acceptedType" placeholder="talktype 0:none, 1:talk, 2:poster"
-                    value="<?=$p->acceptedType?>">
+                <input type="talkCoauthors" name="talkCoauthors" required placeholder="talkCoauthors"  value="<?=$p->talkCoauthors?>">
             </td>
         </tr>
-
         <tr>
-            <td></td>
-            <td><small><code>
-<?php foreach($PRESENTATION_TYPES as $k => $t) { $kk = sprintf("%02d", $k); print <<<EOT
-                $kk: $t<br>\n
-EOT;
-} ?>
-            </code></small></td>
-        </tr>
-
-        <tr>
-            <td><label for="presentationTitle" class="left">P Title</label></td>
+            <td><label for="talkAbstract" class="left">talkAbstract</label></td>
             <td>
-                <input id="presentationTitle"
-                    type="text" name="presentationTitle" placeholder=""
-                    value="<?=$p->presentationTitle?>">
+                <input type="talkAbstract" name="talkAbstract" required placeholder="talkAbstract"  value="<?=$p->talkAbstract?>">
             </td>
         </tr>
 
-        <tr>
-            <td><label for="abstract" class="left">Abstract</label></td>
+
+        <tr class='topborder'>
             <td>
-                <textarea name="abstract"
-                          placeholder="Abstract"
-                          required><?=$p->abstract?></textarea>
+                <input type='hidden' value='0' name='isTalkChecked'>
+                <input
+                    id="isTalkChecked" class="left" type="checkbox"
+                    name="isTalkChecked" value="1"
+                    <?= $p->isTalkChecked ? "checked" : "" ?> >
             </td>
+            <td><label for="isTalkChecked">isTalkChecked</label></td>
+        </tr>
+        <tr>
+            <td>
+                <input type='hidden' value='0' name='isTalkAccepted'>
+                <input
+                    id="isTalkAccepted" class="left" type="checkbox"
+                    name="isTalkAccepted" value="1"
+                    <?= $p->isTalkAccepted ? "checked" : "" ?> >
+            </td>
+            <td><label for="isTalkAccepted">isTalkAccepted</label></td>
         </tr>
 
         <tr>
-            <td><label for="presentationCategories" class="left">Category</label></td>
+            <td><label for="talkSlot" class="left">talkSlot</label></td>
             <td>
-                <input id="presentationCategories"
-                    type="text" name="presentationCategories" placeholder=""
-                    value="<?=$p->presentationCategories?>">
+                <input type="talkSlot" name="talkSlot" required placeholder="talkSlot"  value="<?=$p->talkSlot?>">
             </td>
         </tr>
         <tr>
-            <td></td>
-            <td><small><code>
-<?php
-    $categories = $db->query( "SELECT DISTINCT presentationCategories FROM {$tableName}" )->fetchAll(PDO::FETCH_OBJ);
-    foreach($categories as $c) {
-        if ( $c->presentationCategories != "" ) {
-            print "{$c->presentationCategories}<br>\n";
-        }
-    }
-?>
-            </small></td>
-        </td>
-        <tr>
-            <td><label for="assignedSession" class="left">SID</label></td>
+            <td><label for="talkDuration" class="left">talkDuration</label></td>
             <td>
-                <input id="assignedSession"
-                    type="text" name="assignedSession" placeholder=""
-                    value="<?=$p->assignedSession?>">
-            </td>
-        </tr>
-        <tr>
-            <td>
-            </td>
-            <td>
-                <p><small><code>
-<?php foreach ($all_sessions as $s) {print "{$s->id}: [{$s->shortName}] {$s->description}<br>\n"; } ?>
-                </code></small></p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type='hidden' value='0' name='isPresentationChecked'>
-                <input id="isPresentationChecked"
-                    class="left" type="checkbox"
-                    name="isPresentationChecked" value="1"
-                    <?= $p->isPresentationChecked ? "checked" : "" ?> >
-            </td>
-            <td><label for="isPresentationChecked">isPresentationChecked</label></td>
-        </tr>
-        <tr>
-            <td>
-                <input type='hidden' value='0' name='isPresentationAccepted'>
-                <input id="isPresentationAccepted"
-                    class="left" type="checkbox"
-                    name="isPresentationAccepted" value="1"
-                    <?= $p->isPresentationAccepted ? "checked" : "" ?> >
-            </td>
-            <td><label for="isPresentationAccepted">isPresentationAccepted</label></td>
-        </tr>
-        <tr>
-            <td><label for="presentationSlot" class="left">slot datetime<br>YYYY-MM-DD</label></td>
-            <td>
-                <input id="presentationSlot"
-                    type="text" name="presentationSlot" placeholder=""
-                    value="<?=$p->presentationSlot?>">
-            </td>
-        </tr>
-        <tr>
-            <td><label for="presentationDuration" class="left">duration<br>(min)</label></td>
-            <td>
-                <input id="presentationDuration"
-                    type="text" name="presentationDuration" placeholder=""
-                    value="<?=$p->presentationDuration?>">
-            </td>
-        </tr>
-        <tr>
-            <td><label for="posterPlace" class="left">posterPlace</label></td>
-            <td>
-                <input id="posterPlace"
-                    type="text" name="posterPlace" placeholder=""
-                    value="<?=$p->posterPlace?>">
+                <input type="talkDuration" name="talkDuration" required placeholder="talkDuration"  value="<?=$p->talkDuration?>">
             </td>
         </tr>
 
@@ -320,41 +254,11 @@ EOT;
                     value="<?=$p->nPersons?>">
             </td>
         </tr>
-        <tr>
-            <td>
-                <input type='hidden' value='0' name='isVeggie'>
-                <input id="c1" class="left" type="checkbox"
-                    name="isVeggie" value="1"
-                    <?= $p->isVeggie ? "checked" : "" ?> >
-            </td>
-            <td><label for="c1">Vegetarian meal</label></td>
-        </tr>
-        <tr>
-            <td>
-                <input type='hidden' value='0' name='isImpaired'>
-                <input id="isImpaired"
-                    class="left" type="checkbox"
-                    name="isImpaired" value="1"
-                    <?= $p->isImpaired ? "checked" : "" ?> >
-            </td>
-            <td><label for="isImpaired">Mobility impaired</label></td>
-        </tr>
-
-        <tr>
-            <td>
-                <input type='hidden' value='0' name='lookingForRoomMate'>
-                <input id="lookingForRoomMate"
-                    class="left" type="checkbox"
-                    name="lookingForRoomMate" value="1"
-                    <?= $p->lookingForRoomMate ? "checked" : "" ?> >
-            </td>
-            <td><label for="lookingForRoomMate">is looking for RoomMate</label></td>
-        </tr>
         <tr class='topborder'>
-            <td><label for="notes" class="left">notes / log</label></td>
+            <td><label for="log" class="left">notes / log</label></td>
             <td>
-                <textarea name="notes" readonly
-                          placeholder=""><?=$p->notes?></textarea>
+                <textarea name="log" readonly
+                          placeholder=""><?=$p->log?></textarea>
             </td>
         </tr>
     </table>

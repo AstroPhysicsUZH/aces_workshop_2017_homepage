@@ -27,7 +27,7 @@ foreach($participants as $p) {
     print <<<EOT
         <tr>
             <td class='small title'>{$ti}</td>
-            <td>{$fn} {$ln}</td>
+            <td class='name'>{$fn} {$ln}</td>
             <td class='small'> ({$af})</td>
         </tr>
 EOT;

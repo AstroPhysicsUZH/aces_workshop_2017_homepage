@@ -703,6 +703,10 @@ table.participantstable td.title {
     text-align: right;
 }
 
+table.participantstable td.name {
+    min-width: 14em;
+}
+
 
 @media only screen and (min-width:600px) {
 

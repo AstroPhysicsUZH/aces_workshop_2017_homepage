@@ -206,10 +206,11 @@ if (array_key_exists('id', $_GET)):
         <tr>
             <td><label for="talkAbstract" class="left">talkAbstract</label></td>
             <td>
-                <input type="talkAbstract" name="talkAbstract" required placeholder="talkAbstract"  value="<?=$p->talkAbstract?>">
+                <textarea name="talkAbstract"
+                          placeholder="talkAbstract"
+                          ><?=$p->talkAbstract?></textarea>
             </td>
         </tr>
-
 
         <tr class='topborder'>
             <td>

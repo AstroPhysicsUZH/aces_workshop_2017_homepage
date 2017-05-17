@@ -83,6 +83,8 @@ if (!empty($_POST)) {
                 }
             }
         }
+        $vals["talkCoauthors"] = $vals["lastname"] . ", " . $vals["firstname"] . " [1]; " . $vals["talkCoauthors"];
+        $vals["talkCoauthorsAffil"] = $vals["affiliation"] . "\n" . $vals["talkCoauthorsAffil"];
 
         // override automatic fields
         $vals["log"] = $now->format($datetime_db_fstr) . "\t(webform)\tregistration\n";

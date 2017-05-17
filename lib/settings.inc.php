@@ -160,6 +160,7 @@ $tableFields = array(
     'wantsPresentTalk' => ['INTEGER', 'boolean', FALSE],
     'talkTitle'      => ['TEXT', 'string', ""],
     'talkCoauthors'  => ['TEXT', 'string', ""],
+    'talkCoauthorsAffil'  => ['TEXT', 'string', ""],
     'talkAbstract'   => ['TEXT', 'string', ""],
 
     'isTalkChecked'  => ['INTEGER', 'boolean', FALSE],  # has it been considered / looked at, and descision shall be published

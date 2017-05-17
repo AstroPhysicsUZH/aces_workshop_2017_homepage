@@ -52,10 +52,17 @@ function print_subm($p){
 
 foreach ($talkSubmissions as $TS) {
     $pid = sprintf("%03u", $TS->id);
+    $aff = "";
+    foreach (array_values(explode("\n", $TS->talkCoauthorsAffil)) as $i => $val) {
+        $j = $i+1;
+        $aff .= "[{$j}] $val <br />";
+    }
 
     print "<h3>{$TS->talkTitle}</h3>\n";
-    print "<span class='italic'>{$TS->lastname}, {$TS->firstname} ";
-    print "<span class='small'><code>[{$pid}]</code></span></span> ";
+    print "<span class=''>{$TS->lastname}, {$TS->firstname} ";
+    print "<span class='small'><code>[{$pid}]</code></span></span>\n<br />\n";
+    print "<span class='italic'>{$TS->talkCoauthors}\n<br />\n";
+    print "<span class='small'>{$aff}</span></span> ";
     print "<p>{$TS->talkAbstract}</p>\n";
     print "<hr />";
 

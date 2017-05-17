@@ -194,13 +194,23 @@ if (array_key_exists('id', $_GET)):
         <tr>
             <td><label for="talkTitle" class="left">talkTitle</label></td>
             <td>
-                <input type="talkTitle" name="talkTitle" required placeholder="talkTitle"  value="<?=$p->talkTitle?>">
+                <input type="talkTitle" name="talkTitle" placeholder="talkTitle"  value="<?=$p->talkTitle?>">
             </td>
         </tr>
         <tr>
             <td><label for="talkCoauthors" class="left">talkCoauthors</label></td>
             <td>
-                <input type="talkCoauthors" name="talkCoauthors" required placeholder="talkCoauthors"  value="<?=$p->talkCoauthors?>">
+                <small><code>main author: <?=$p->lastname?>, <?=$p->firstname?> [1]; </code></small><br />
+                <input type="talkCoauthors" name="talkCoauthors" placeholder="talkCoauthors"  value="<?=$p->talkCoauthors?>">
+            </td>
+        </tr>
+        <tr>
+            <td><label for="talkCoauthorsAffil" class="left">talkCoauthorsAffil</label></td>
+            <td>
+                <small><code>main affil: <?=$p->affiliation?></code></small>
+                <textarea name="talkCoauthorsAffil"
+                          placeholder="talkCoauthorsAffil"
+                          ><?=$p->talkCoauthorsAffil?></textarea>
             </td>
         </tr>
         <tr>

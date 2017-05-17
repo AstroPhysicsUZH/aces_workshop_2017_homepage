@@ -56,7 +56,7 @@ $posters = $db->query( $stmtstr )->fetchAll(PDO::FETCH_OBJ);
 
 $stmtstr = "SELECT
                 id, title, firstname, lastname, email, affiliation,
-                talkTitle, talkCoauthors, talkAbstract,
+                talkTitle, talkCoauthors, talkCoauthorsAffil, talkAbstract,
                 isTalkChecked, isTalkAccepted, talkSlot
             FROM {$tableName}
             WHERE wantsPresentTalk=1;

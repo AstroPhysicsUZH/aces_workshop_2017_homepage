@@ -32,6 +32,7 @@ $( document ).ready(function(){
         var $abstract = $('#talkAbstract');
         var $title    = $('#talkTitle');
         var $authors  = $('#talkCoauthors');
+        var $authorsaffil  = $('#talkCoauthorsAffil');
         var $affil    = $("#affiliation");
 
         var intercom = new Intercom();
@@ -44,20 +45,32 @@ $( document ).ready(function(){
         .add($first)
         .add($last)
         .add($affil)
+        .add($authorsaffil)
         .on('change keyup paste', function() {
             /* this function is rate limited! because mathjax reloads.. */
             if (canFireRequest) {
                 canFireRequest = false;
 
-                var authorslist = "<b>" + $last.val() + ', ' + $first.val() + "<sup>1</sup></b>";
+                var authorslist = "<b>" + $last.val() + ', ' + $first.val() + " [1]</b>";
                 if ($authors.val().length > 0) {
-                    authorslist += "; " + $authors.val();
+                    var s = $authors.val().split(';');
+                    s.forEach(function (value, i) {
+                        authorslist += "<br />\n" + value;
+                    });
+                }
+                var affilia = "<sup>[1]</sup> "+$affil.val();
+                if ($authorsaffil.val().length > 0) {
+                    var s = $authorsaffil.val().replace(/(?:\r\n|\r|\n)/g, '\n').split('\n');
+                    s.forEach(function (value, i) {
+                        console.log('%d: %s', i, value);
+                        affilia += "<br />\n<sup>[" + (i+2) + "]</sup> "+value;
+                    });
                 }
 
                 intercom.emit('notice', {
                     title: $title.val(),
                     authors: authorslist,
-                    affil: "<sup>1</sup>"+$affil.val(),
+                    affil: affilia,
                     abstract: $abstract.val(),
                 })
                 setTimeout(function() {
@@ -169,11 +182,15 @@ $( document ).ready(function(){
         </thead>
         <tr>
             <td colspan="2" style="text-align:left;">
-                Do you want to present a  talk?
+                Do you want to present a talk?
                 <br />
                 If so, please provide a short abstract (up to 200 words).
                 After registration, you will be notified in due time on its acceptance.
                 You will be able to change your submission after completing the registration.
+                <br />
+                You can leave the "authors affiliation" field empty, then your own affiliation will be used.
+                Otherwise write one affiliation per line, they will be numbered automatically.
+                Check the preview!
                 <br />
                 (Deadline for abstract submission: <?=$dateAbstractSubmissionDeadline->format($date_fstr);?>)
             </td>
@@ -201,8 +218,20 @@ $( document ).ready(function(){
                 <label for="talkCoauthors" class="left">Co-Authors</label>
             </td>
             <td>
-                <input id="talkCoauthors" type="text" name="talkCoauthors" placeholder="Last, First; Last, First; ...">
+                <input id="talkCoauthors" type="text" name="talkCoauthors" placeholder="Last, First [#]; Last, First [#]; ...">
                 <span></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="talkCoauthorsAffil" class="left">Additional Affiliations</label>
+            </td>
+            <td>
+                <textarea id="talkCoauthorsAffil" name="talkCoauthorsAffil"
+                          style="height:4em;"
+                          placeholder="list additional affiliations here, one per line, will be automatically numbered. Start with second (first is your affiliation)"
+                          ></textarea>
+                <br />
             </td>
         </tr>
         <tr>

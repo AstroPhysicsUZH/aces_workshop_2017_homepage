@@ -21,7 +21,7 @@ function print_subm($p){
 <head>
     <link rel="stylesheet" href="../js/jquery-ui-1.12.0.custom/jquery-ui.min.css">
     <link rel="stylesheet" href="../js/jquery-ui-1.12.0.custom/jquery-ui.theme.min.css">
-    <link rel="stylesheet" href="../css/layout_hack.css">
+    <!--<link rel="stylesheet" href="../css/layout_hack.css">-->
     <script src="../js/jquery-1.12.1.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
     <script src="../js/moment.min.js"></script>
@@ -41,7 +41,12 @@ function print_subm($p){
     </script>
 
 <style>
-
+    p {
+        display: block;
+    }
+    .small {
+        font-size: 80%;
+    }
 </style>
 
 
@@ -59,10 +64,9 @@ foreach ($talkSubmissions as $TS) {
     }
 
     print "<h3>{$TS->talkTitle}</h3>\n";
-    print "<span class=''>{$TS->lastname}, {$TS->firstname} ";
-    print "<span class='small'><code>[{$pid}]</code></span></span>\n<br />\n";
-    print "<span class='italic'>{$TS->talkCoauthors}\n<br />\n";
-    print "<span class='small'>{$aff}</span></span> ";
+    print "<p class=''>{$TS->talkCoauthors}</p>\n";
+    print "<p class='small'>{$aff}</p>\n";
+    print "<p class='small'>(submitted by: {$TS->lastname}, {$TS->firstname} <code>[{$pid}]</code>)</p>\n";
     print "<p>{$TS->talkAbstract}</p>\n";
     print "<hr />";
 

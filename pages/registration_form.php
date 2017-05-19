@@ -32,7 +32,7 @@ $( document ).ready(function(){
         var $abstract = $('#talkAbstract');
         var $title    = $('#talkTitle');
         var $authors  = $('#talkCoauthors');
-        var $authorsaffil  = $('#talkCoauthorsAffil');
+        var $authorsaffil = $('#talkCoauthorsAffil');
         var $affil    = $("#affiliation");
 
         var intercom = new Intercom();

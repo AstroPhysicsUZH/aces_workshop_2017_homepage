@@ -19,8 +19,15 @@ if (!empty($_POST)) {
 
         if ($action=="save") {
             print "<h2>saving</h2>";
+
+            # remove entries that shouldn't be added to DB directly
+            $addnote = $_POST["addnote"];
+            unset($_POST["addnote"]);
+
             $values = [];
 
+            # we create your own statement string. because what can possibly go
+            # wrong using this technique
             $stmtstr = "UPDATE {$tableName} SET ";
 
             $lbls = [];
@@ -32,8 +39,13 @@ if (!empty($_POST)) {
 
             # log entry
             $dtstr = $now->format($datetime_db_fstr);
-            $str = "$dtstr\t{$_SESSION["username"]}\tupdate entry";
-            $stmtstr .= ", log = ('$str' || CHAR(13) || log ) ";
+            if (empty($addnote)) {
+                $str = "$dtstr\t{$_SESSION["username"]}\tupdated entry";
+            } else {
+                $str = "$dtstr\t{$_SESSION["username"]}\t!!! $addnote\n";
+                $str .= "$dtstr\t{$_SESSION["username"]}\tupdated entry";
+            }
+            $stmtstr .= ", log = ('$str' || CHAR(10) || log ) ";  # concat the log in SQL, char10 = \n
 
             $stmtstr .= " WHERE id = :id;";
 
@@ -51,6 +63,7 @@ if (!empty($_POST)) {
             $res = null;
             $stmt = null;
             print "DONE</p>";
+
         }
 
 
@@ -155,7 +168,7 @@ if (array_key_exists('id', $_GET)):
         <tr>
             <td><label for="address" class="left">Full Address</label></td>
             <td>
-                <textarea name="address"
+                <textarea id="address" name="address"
                           placeholder="Enter your FULL ADDRESS, including your FULL NAME and country, as it should be written on a letter."
                           required><?=$p->address?></textarea>
             </td>
@@ -194,23 +207,32 @@ if (array_key_exists('id', $_GET)):
         <tr>
             <td><label for="talkTitle" class="left">talkTitle</label></td>
             <td>
-                <input type="talkTitle" name="talkTitle" placeholder="talkTitle"  value="<?=$p->talkTitle?>">
+                <textarea
+                    id="talkTitle" name="talkTitle"
+                    placeholder="talkTitle"
+                    ><?=$p->talkTitle?></textarea>
             </td>
         </tr>
         <tr>
             <td><label for="talkCoauthors" class="left">talkCoauthors</label></td>
             <td>
-                <small><code>main author: <?=$p->lastname?>, <?=$p->firstname?> [1]; </code></small><br />
-                <input type="talkCoauthors" name="talkCoauthors" placeholder="talkCoauthors"  value="<?=$p->talkCoauthors?>">
+                <small><code>main author:<br /><?=$p->lastname?>, <?=$p->firstname?> [1]; </code></small>
+                <br />
+                <textarea
+                    id="talkCoauthors" name="talkCoauthors"
+                    placeholder="talkCoauthors"
+                    ><?=$p->talkCoauthors?></textarea>
             </td>
         </tr>
         <tr>
             <td><label for="talkCoauthorsAffil" class="left">talkCoauthorsAffil</label></td>
             <td>
-                <small><code>main affil: <?=$p->affiliation?></code></small>
-                <textarea name="talkCoauthorsAffil"
-                          placeholder="talkCoauthorsAffil"
-                          ><?=$p->talkCoauthorsAffil?></textarea>
+                <small><code>main affil:<br /><?=$p->affiliation?></code></small>
+                <br />
+                <textarea
+                    id="talkCoauthorsAffil" name="talkCoauthorsAffil"
+                    placeholder="talkCoauthorsAffil"
+                    ><?=$p->talkCoauthorsAffil?></textarea>
             </td>
         </tr>
         <tr>
@@ -246,13 +268,21 @@ if (array_key_exists('id', $_GET)):
         <tr>
             <td><label for="talkSlot" class="left">talkSlot</label></td>
             <td>
-                <input type="talkSlot" name="talkSlot" required placeholder="talkSlot"  value="<?=$p->talkSlot?>">
+                <input
+                    id="talkSlot" name="talkSlot" type="text"
+                    required
+                    placeholder="talkSlot"
+                    value="<?=$p->talkSlot?>">
             </td>
         </tr>
         <tr>
             <td><label for="talkDuration" class="left">talkDuration</label></td>
             <td>
-                <input type="talkDuration" name="talkDuration" required placeholder="talkDuration"  value="<?=$p->talkDuration?>">
+                <input id="talkDuration" name="talkDuration"
+                    type="number"
+                    required
+                    placeholder="talkDuration"
+                    value="<?=$p->talkDuration?>">
             </td>
         </tr>
 
@@ -260,16 +290,39 @@ if (array_key_exists('id', $_GET)):
         <tr class='topborder'>
             <td><label for="nPersons">Acc persons</label></td>
             <td>
-                <input id="nPersons"
-                    type="number" name="nPersons"
+                <input id="nPersons" name="nPersons"
+                    type="number"
                     value="<?=$p->nPersons?>">
             </td>
         </tr>
         <tr class='topborder'>
-            <td><label for="log" class="left">notes / log</label></td>
+            <td><label for="log" class="left">log</label></td>
             <td>
-                <textarea name="log" readonly
-                          placeholder=""><?=$p->log?></textarea>
+<?php
+$log = str_replace(["\r\n","\n\r","\r","\n","\\r","\\n","\\r\\n"], "\n", $p->log);
+echo "<table style='margin-top:0.5em;'>\n";
+foreach (array_values(explode("\n", $log)) as $i => $entry) {
+    echo "<tr>\n";
+        foreach (array_values(explode("\t", $entry)) as $j => $col) {
+            echo "<td><code>$col</code></td>\n";
+        }
+    echo "</tr>\n";
+}
+echo "</table>\n";
+/*                <textarea name="log"
+                    readonly
+                    placeholder=""
+                    ><?=$p->log?></textarea>
+*/
+?>
+            </td>
+        </tr>
+            <td><label for="addnote" class="left">add a note</label></td>
+            <td>
+                <input
+                    id="addnote" name="addnote" type="text"
+                    placeholder=""
+                    value="">
             </td>
         </tr>
     </table>

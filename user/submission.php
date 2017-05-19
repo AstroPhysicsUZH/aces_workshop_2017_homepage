@@ -25,8 +25,8 @@ if (isset($_POST["op"]) || isset($_GET["op"])) {
 
         # log entry
         $dtstr = $now->format($datetime_db_fstr);
-        $str = "$dtstr\t" . sprintf("u%03d", $_SESSION['uid']) . "\tuser updated submission";
-        $stmtstr .= ", log = ('$str' || CHAR(13) || log ) ";
+        $str = "$dtstr\t" . sprintf("u%03d", $_SESSION['uid']) . "\tupdated submission";
+        $stmtstr .= ", log = ('$str' || CHAR(10) || log ) ";
 
         $stmtstr .= " WHERE id = :id;";
 
@@ -99,9 +99,10 @@ $( document ).ready(function(){
 
         var $first    = $('#firstname');
         var $last     = $('#lastname');
-		var $abstract = $('#talkAbstract');
-		var $title    = $('#talkTitle');
-		var $authors  = $('#talkCoauthors');
+        var $abstract = $('#talkAbstract');
+        var $title    = $('#talkTitle');
+        var $authors  = $('#talkCoauthors');
+        var $authorsaffil = $('#talkCoauthorsAffil');
         var $affil    = $("#affiliation");
 
 		var intercom = new Intercom();
@@ -114,20 +115,40 @@ $( document ).ready(function(){
             .add($first)
             .add($last)
             .add($affil)
+            .add($authorsaffil)
             .on('change keyup paste', function() {
             /* this function is rate limited! because mathjax reloads.. */
             if (canFireRequest) {
                 canFireRequest = false;
 
-                var authorslist = "<b>" + $last.val() + ', ' + $first.val() + "<sup>1</sup></b>";
+                var authorslist = [];
                 if ($authors.val().length > 0) {
-                    authorslist += "; " + $authors.val();
+                    $authors.val().split(';').forEach(function (v, i) {
+                        //console.log(v);
+                        var m = v.match(/\[[0-9]\]/);
+                        if (m) {
+                            var s = v.substr(0, m.index) + " <sup>" + m[0] + "</sup>";
+                            //console.log(s);
+                            authorslist.push(s);
+                        }
+                    });
                 }
+                authorslist = authorslist.join("<br />\n");
+
+                var affilia = [];
+                if ($authorsaffil.val().length > 0) {
+                    var s = $authorsaffil.val().replace(/(?:\r\n|\r|\n)/g, '\n').split('\n');
+                    s.forEach(function (value, i) {
+                        /*console.log('%d: %s', i, value);*/
+                        affilia.push("<sup>[" + (i+1) + "]</sup> "+value);
+                    });
+                }
+                affilia = affilia.join("<br />\n")
 
                 intercom.emit('notice', {
                     title: $title.val(),
                     authors: authorslist,
-                    affil: "<sup>1</sup>"+$affil.val(),
+                    affil: affilia,
                     abstract: $abstract.val(),
                 })
                 setTimeout(function() {
@@ -154,65 +175,112 @@ $( document ).ready(function(){
 
 
     <form action="submission.php" method="post">
-        <table class="registration">
+        <table class="usertable">
+            <tr>
+                <th colspan="2">
+                    <h2>Personal Details</h2>
+                </th>
+            </tr>
+            <tr>
+                <td><label for="title">Title</label></td>
+                <td>
+                    <input
+                        id="title" type="text" name="title"
+                        readonly
+                        placeholder="- / PhD / Dr / Prof"
+                        value="<?=$P["title"]?>">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="firstname">First name</label></td>
+                <td>
+                    <input
+                        id="firstname" type="text" name="firstname"
+                        readonly
+                        placeholder="Enter First Name"
+                        value="<?=$P["firstname"]?>">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="lastname">Last name</label></td>
+                <td>
+                    <input
+                        id="lastname" type="text" name="lastname"
+                        readonly
+                        placeholder="Enter Last Name"
+                        value="<?=$P["lastname"]?>">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="affiliation">Affiliation</label></td>
+                <td>
+                    <input
+                        id="affiliation" type="text" name="affiliation"
+                        readonly
+                        placeholder="Enter Affiliation"
+                        value="<?=$P["affiliation"]?>">
+                </td>
+            </tr>
 
+            <tr>
+                <th colspan="2">
+                    <h2>Submission Details:</h2>
+                    <p style="font-weight:normal;">
+                        Enter authors like:<br />
+                            <code>Lastname1, Firstname1 [2]; Lastname2, Firstname2 [1]; ...</code><br />
+                        Enter one affiliation per line, without numbering, like: <br />
+                            <code>Affiliation 1<br />Affiliation 2</code><br />
+                        Please check the preview, whether your input is correct / parsed successfully.
+
+                    </p>
+                </th>
+            </tr>
             <tr>
                 <td>
                     <input type='hidden' value='0' name='wantsPresentTalk'>
                     <input
-                        id="wantsPresentTalk" class="left" type="checkbox"
+                        id="wantsPresentTalk" type="checkbox"
                         name="wantsPresentTalk" value="1"
                         <?= $P["wantsPresentTalk"] ? "checked" : "" ?> >
                 </td>
-                <td><label for="wantsPresentTalk">Presenting a talk</label></td>
-            </tr>
-
-            <tr>
-                <td><label for="title" class="left">Title</label></td>
-                <td>
-                    <input id="title" type="text" name="title" placeholder="- / PhD / Dr / Prof" value="<?=$P["title"]?>">
-                </td>
+                <td><label for="wantsPresentTalk">Submitting a Presentation</label></td>
             </tr>
             <tr>
-                <td><label for="firstname" class="left">First name</label></td>
                 <td>
-                    <input id="firstname" type="text" name="firstname" required placeholder="Enter First Name" value="<?=$P["firstname"]?>">
-                </td>
-            </tr>
-            <tr>
-                <td><label for="lastname" class="left">Last name</label></td>
-                <td>
-                    <input id="lastname" type="text" name="lastname" required placeholder="Enter Last Name"  value="<?=$P["lastname"]?>">
-                </td>
-            </tr>
-            <tr>
-                <td><label for="affiliation" class="left">Affiliation</label></td>
-                <td>
-                    <input id="affiliation" type="text" name="affiliation" placeholder="Enter Affiliation" value="<?=$P["affiliation"]?>">
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <label for="talkTitle" class="left">Titel</label>
+                    <label for="talkTitle">Titel</label>
                 </td>
                 <td>
-                    <input id="talkTitle" type="text" name="talkTitle" placeholder="Titel of Presentation"
-                    value="<?=$P["talkTitle"]?>">
+                    <textarea id="talkTitle" name="talkTitle"
+                              style="height:6em;"
+                              placeholder="title"
+                              ><?=$P["talkTitle"]?></textarea>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="talkCoauthors" class="left">Co-Authors</label>
+                    <label for="talkCoauthors">Authors<br /><small>Last, First[#]; ...</small></label>
                 </td>
                 <td>
-                    <input id="talkCoauthors" type="text" name="talkCoauthors" placeholder="Last, First; Last, First; ..."
-                    value="<?=$P["talkCoauthors"]?>">
+                    <textarea id="talkCoauthors" name="talkCoauthors"
+                              style="height:6em;"
+                              placeholder="Authors, ;-separated, with affiliation like: Lastname, Firstname [1]; Lastname2, Firstname2 [2]; ..."
+                              ><?=$P["talkCoauthors"]?></textarea>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="talkAbstract" class="left">Abstract</label>
+                    <label for="talkCoauthorsAffil">Affiliations<br /><small>one per line</small></label>
+                </td>
+                <td>
+                    <textarea id="talkCoauthorsAffil" name="talkCoauthorsAffil"
+                              style="height:6em;"
+                              placeholder="Affiliation, one per line, without!! numbering"
+                              ><?=$P["talkCoauthorsAffil"]?></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="talkAbstract">Abstract</label>
                 </td>
                 <td>
                     <textarea id="talkAbstract" name="talkAbstract"
@@ -221,7 +289,7 @@ $( document ).ready(function(){
                               ><?=$P["talkAbstract"]?></textarea>
                     <br />
                     <?php /* open popup and trigger initial update for datatransfer */ ?>
-                    <a href="preview.php"  style="font-size: 80%;" onclick="window.open('../preview.php', 'newwindow', 'width=400, height=600'); setTimeout(function() {$('#talkAbstract').change()},500); return false;">open interactive preview (disable popup blocker)</a>
+                    <a href="preview.php"  style="font-size: 80%;" onclick="window.open('../preview.php', 'newwindow', 'width=400, height=600'); setTimeout(function() {$('#talkAbstract').change()},500); return false;">open interactive preview (disable popup blocker, press key in text field to update)</a>
                 </td>
             </tr>
 

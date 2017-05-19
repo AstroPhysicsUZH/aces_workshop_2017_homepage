@@ -173,3 +173,34 @@
     border: 2px solid red;
     background-color: #f99;
 }
+
+
+
+table.usertable {
+    width: 100%;
+}
+
+table.usertable td {
+    text-align: right;
+    padding: 0.25em 0.25em 0.25em 0;
+}
+table.usertable td + td {
+    text-align: left;
+}
+
+table.usertable th {
+    text-align: left;
+    padding: 0.25em 0.25em 0.25em 0;
+}
+
+input[readonly] {
+  background-color: #aaa;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}

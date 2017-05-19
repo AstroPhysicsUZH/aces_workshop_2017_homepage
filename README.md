@@ -1,6 +1,9 @@
 # aces_workshop_2017_homepage
 ACES Workshop 2017 Hopepage
 
+##TODO for next install
+change table filed `talkCoauthors` and `talkCoauthorsAffil`. see the settings.
+
 ## initial setup
 
 ```bash
@@ -27,4 +30,3 @@ Just push
 
 ## php dependencies
 we use composor for this
-

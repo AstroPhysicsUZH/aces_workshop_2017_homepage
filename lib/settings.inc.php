@@ -159,8 +159,8 @@ $tableFields = array(
 
     'wantsPresentTalk' => ['INTEGER', 'boolean', FALSE],
     'talkTitle'      => ['TEXT', 'string', ""],
-    'talkCoauthors'  => ['TEXT', 'string', ""],
-    'talkCoauthorsAffil'  => ['TEXT', 'string', ""],
+    'talkCoauthors'  => ['TEXT', 'string', ""],  # !!! MISSLEADING NAME, are all the authors, like Last, First [1]; Last2, First2 [2]; ...
+    'talkCoauthorsAffil'  => ['TEXT', 'string', ""], # !!!MISSLEADING NAME, this are all the affiliations for the talk: one per line '\n' separated'
     'talkAbstract'   => ['TEXT', 'string', ""],
 
     'isTalkChecked'  => ['INTEGER', 'boolean', FALSE],  # has it been considered / looked at, and descision shall be published

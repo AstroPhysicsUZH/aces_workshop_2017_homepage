@@ -62,11 +62,13 @@ foreach ($talkSubmissions as $TS) {
         $j = $i+1;
         $aff .= "[{$j}] $val <br />";
     }
+    $email = "";
+    if (array_key_exists('email', $TS)) {$email = $TS->email;}
 
     print "<h3>{$TS->talkTitle}</h3>\n";
     print "<p class=''>{$TS->talkCoauthors}</p>\n";
     print "<p class='small'>{$aff}</p>\n";
-    print "<p class='small'>(submitted by: {$TS->lastname}, {$TS->firstname} <code>[{$pid}]</code>)</p>\n";
+    print "<p class='small'>(submitted by: {$TS->lastname}, {$TS->firstname} <code>[{$pid}]</code> email: <a href='mailto:$email'>$email</a>)</p>\n";
     print "<p>{$TS->talkAbstract}</p>\n";
     print "<hr />";
 

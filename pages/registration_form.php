@@ -90,7 +90,7 @@ $( document ).ready(function(){
 
 <?php if ($isItTooLate) { ?>
     <div class='bookedout'>
-        BOOKED OUT
+        REGISTRATION<br />CLOSED
     </div>
     <fieldset disabled="disabled" >
 <?php } ?>
@@ -332,7 +332,10 @@ $rnd = rand(100,999);
         </tr>
     </table>
 <?php if ($isItTooLate) { ?>
-</fieldset>
+    <div class='bookedout' style='top: -3em;'>
+        REGISTRATION<br />CLOSED
+    </div>
+    </fieldset>
 <?php } ?>
 
 <input type="hidden" name="check" value="<?=$rnd;?>" >

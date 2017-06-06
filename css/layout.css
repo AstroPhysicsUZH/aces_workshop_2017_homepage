@@ -624,9 +624,9 @@ div.speakers_abstracts .mod_title {
     color: red;
     font-weight: bold;
     transform: rotate(-30deg);
-    left: 3em;
-    text-align: left;
     height: 5px;
+    z-index: 1;
+    text-align: center;
 }
 
 ul.prog {

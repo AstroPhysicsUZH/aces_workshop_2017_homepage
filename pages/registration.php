@@ -14,13 +14,6 @@
     Please remember to book your hotel in time as well!
 </p>
 
-<?php if ($isItTooLate) { ?>
-    <div class='bookedout'>
-        BOOKING CLOSED
-    </div>
-<?php } ?>
-
-
 <p>
     For any special requests, please register anyways and contact us by email by replying to the registration email or by writing an email to <a href="mailto:relativityuzh@gmail.com">relativityUZH@gmail.com</a>.
 </p>

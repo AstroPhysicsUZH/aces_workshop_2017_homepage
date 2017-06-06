@@ -25,12 +25,6 @@ $miss_spkrs = [
         ''
     ],
     [
-        'Ye', 'Jun',
-        'JILA, University of Colorado Boulder, USA',
-        '',
-        ''
-    ],
-    [
         'Schnatz', 'Harald',
         'PTB, Braunschweig, Germany',
         '',

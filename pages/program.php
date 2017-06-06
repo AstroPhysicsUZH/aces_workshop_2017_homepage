@@ -9,15 +9,10 @@ $reg_spkrs_ids = [
     4,  # Christophe Salomon
     25, # Flury', 'Jacob.
     32, # Rodrigues, Manuel
+    53, # Guerlin, Christine
 ];
 
 $miss_spkrs = [
-    [
-        'Guerlin', 'Christine',
-        'Pierre and Marie Curie University, Paris, France',
-        '',
-        ''
-    ],
     [
         'Laemmerzahl', 'Claus',
         'ZARM, Bremen, Germany',

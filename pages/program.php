@@ -117,6 +117,16 @@ EOT;
 
 <h1>Programme</h1>
 
+<h2>Final Program - List</h2>
+<div class='speakers_abstracts'>
+<?php require "items/list_of_talks.php"; ?>
+</div>
+
+<h2>Final Program - Schedule</h2>
+<?php require "items/program.php"; ?>
+
+<?php
+/*
 <style>
 li { margin-bottom: 0.5em; }
 </style>
@@ -133,6 +143,8 @@ li { margin-bottom: 0.5em; }
 <div class='speakers_abstracts'>
 <?php foreach ($speakers as $k=>$s) { if (has_abstract($s)) {print_overlay($k, $s);}}?>
 </div>
+
+*/?>
 
 <h2>Conference Dinner</h2>
 <p>

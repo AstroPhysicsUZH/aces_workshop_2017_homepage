@@ -1,18 +1,71 @@
 <?php
-require_once "lib/app.php";
-#$db = open_db($db_address_abs);
 
-require "data/events.php";
-
+require_once "lib/headerphp.php";
+require "../data/events.php";
+require_once "../lib/app.php";
 
 $fmt = 'Y-m-d\TH:i:s';
 
 
 ?>
+<html>
+<head>
+    <link rel="stylesheet" href="../js/jquery-ui-1.12.0.custom/jquery-ui.min.css">
+    <link rel="stylesheet" href="../js/jquery-ui-1.12.0.custom/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="../css/fullcalendar.min.css">
+    <script src="../js/jquery-1.12.1.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/moment.min.js"></script>
+    <script src="../js/fullcalendar.min.js"></script>
+
+    <script src="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.css">
+
+<style>
+
+.data {
+    display: inline-block;
+}
+
+.pid {
+    font-size: 80%;
+    color: #800;
+    width: 3.5em;
+    display: inline-block;
+    text-align:center;
+}
+
+.time {
+    font-size: 80%;
+    color: #888;
+}
+
+.title {
+    font-style: italic;
+}
+
+.notalk {
+    color: #888;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h3.chair {
+    margin: 0;
+    padding: 1em 0 0.5em 0;
+    font-size: 100%;
+}
 
 
-<div id='calendar'></div>
+</style>
 
+
+</head>
+<body>
+    <h1>Programme</h1>
+    <div id='calendar'></div>
 
 <script>
 $(document).ready(function() {
@@ -46,7 +99,7 @@ EOT;
 EOT;
     }
     ?>
-    ], color: '#ff8888', textColor: 'black'};
+], color: '#88ff88', textColor: 'black', borderColor:'#000088'};
 
     // Enter Plenary Talks
     var evtSrcsCTalks = { events: [
@@ -66,7 +119,7 @@ EOT;
     }
     ?>
 
-    ], color:'#88ff88', textColor:'black', borderColor:'#008800' };
+    ], color:'#ff8888', textColor:'black', borderColor:'#008800' };
 
     // Enter Parallelsessions
     var evtSrcsPTalks = { events: [
@@ -87,7 +140,7 @@ EOT;
     }
     ?>
 
-        ], color:'#88ff88', textColor:'black', borderColor:'#008800' };
+        ], color:'#ff8888', textColor:'black', borderColor:'#008800' };
 
 
     $('#calendar').fullCalendar({
@@ -117,9 +170,9 @@ EOT;
         },
 
         eventRender: function(event, element) {
-            if (event.ptitle) {
+/*            if (event.ptitle) {
                 element.find(".fc-content").append("<div class='fc-ptitle'>"+event.ptitle+"</div>");
-            }
+            }*/
             if (event.ptitle) {
                 var txt = "<b>" + event.ptitle + "</b><br>\n";
                 txt += "<i>" + event.name + "</i><br><br>\n";

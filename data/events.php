@@ -57,13 +57,80 @@ $posters = $db->query( $stmtstr )->fetchAll(PDO::FETCH_OBJ);
 $stmtstr = "SELECT
                 id, title, firstname, lastname, email, affiliation,
                 talkTitle, talkCoauthors, talkCoauthorsAffil, talkAbstract,
-                isTalkChecked, isTalkAccepted, talkSlot
+                isTalkChecked, isTalkAccepted, talkSlot, talkDuration
             FROM {$tableName}
             WHERE wantsPresentTalk=1;
             ORDER BY lastname ASC;" ;
 
 $talkSubmissions = $db->query( $stmtstr )->fetchAll(PDO::FETCH_OBJ);
 
+
+$stmtstr = "SELECT
+                id, title, firstname, lastname, email, affiliation,
+                talkTitle, talkCoauthors, talkCoauthorsAffil, talkAbstract,
+                isTalkChecked, isTalkAccepted, talkSlot, talkDuration
+            FROM {$tableName}
+            WHERE wantsPresentTalk=1 AND isTalkAccepted=1;
+            ORDER BY lastname ASC;" ;
+
+$talks = $db->query( $stmtstr )->fetchAll(PDO::FETCH_OBJ);
+$presentations = $talks;
+
+
+$chairs_ = [
+    '2017-06-29T09:00:00' => "U. Schreiber",
+    '2017-06-29T14:00:00' => "L. Cacciapuoti",
+    '2017-06-30T08:30:00' => "P. Wolf",
+    '2017-06-30T14:00:00' => "Ch. Salomon",
+];
+$chairs = [];
+foreach($chairs_ as $date =>$chair) {
+    $chairs[] = ['date'=>new DateTime($date),'chair'=>$chair];
+}
+
+
+$breaks_list = [
+    ['Coffee Break', '2017-06-29T11:00:00', '2017-06-29T11:30:00', ''],
+    ['Coffee Break', '2017-06-29T16:00:00', '2017-06-29T16:30:00', ''],
+    ['Coffee Break', '2017-06-30T10:30:00', '2017-06-30T11:00:00', ''],
+    ['Coffee Break', '2017-06-30T15:20:00', '2017-06-30T15:40:00', ''],
+
+    ['Lunch Break', '2017-06-29T12:30:00', '2017-06-29T14:00:00', ''],
+    ['Lunch Break', '2017-06-30T12:40:00', '2017-06-30T14:00:00', ''],
+];
+
+$special_events_list = [
+    ['Registraton opens', '2017-06-29T08:00:00', '2017-06-29T08:45:00', ''],
+    ['Welcome Talk', '2017-06-29T08:45:00', '2017-06-29T09:00:00', ''],
+    ['Dinner', '2017-06-29T19:30:00', '2017-06-29T22:30:00', ''],
+    ['Discussion + Final Remarks', '2017-06-30T16:40:00', '2017-06-30T17:00:00', ''],
+];
+
+
+/*
+*/
+
+
+
+
+# group by day
+foreach($talks as $p) {
+    #print_r($p);
+
+    $p->name = substr($p->firstname,0,1) . ". " . $p->lastname;
+    $p->start = new DateTime($p->talkSlot);
+    try {
+        $dur = new DateInterval('PT'.$p->talkDuration.'M');
+    }
+    catch (Exception $e) {
+        $dur = new DateInterval('PT'.'15'.'M');
+        echo "<!-- error with duration of {$p->id} -->\n";
+    }
+    $end = new DateTime($p->talkSlot);
+    $p->end = $end->add($dur);
+    $p->is_plenary = TRUE;
+    #print_r($p);
+}
 
 
 /*
@@ -86,29 +153,6 @@ $chairs_ = [
 $chairs = [];
 foreach($chairs_ as $date =>$chair) {
     $chairs[] = ['date'=>new DateTime($date),'chair'=>$chair];
-}
-*/
-
-
-
-/*
-# group by day
-foreach($talks as $p) {
-    #print_r($p);
-
-    $p->name = substr($p->firstname,0,1) . ". " . $p->lastname;
-    $p->start = new DateTime($p->talkSlot);
-    try {
-        $dur = new DateInterval('PT'.$p->talkDuration.'M');
-    }
-    catch (Exception $e) {
-        $dur = new DateInterval('PT'.'15'.'M');
-        echo "<!-- error with duration of {$p->id} -->\n";
-    }
-    $end = new DateTime($p->presentationSlot);
-    $p->end = $end->add($dur);
-    $p->is_plenary = ($p->assignedSession == $plenary_sid ? TRUE : FALSE);
-    #print_r($p);
 }
 
 
@@ -170,6 +214,7 @@ $special_events_list = [
     ['Apero & Dinner', '2016-09-07T18:45:00', '2016-09-07T22:30:00', ''],
     ['Farewell Talk', '2016-09-09T12:30:00', '2016-09-09T12:45:00', 'by K. Danzmann'],
 ];
+*/
 
 $breaks = [];
 foreach($breaks_list as $bl) {
@@ -199,5 +244,5 @@ foreach ($specialevents as $se) {
     $se->is_special = TRUE;
     $se->is_no_talk = TRUE;
 }
-*/
+
 ?>

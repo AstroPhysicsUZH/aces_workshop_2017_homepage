@@ -78,10 +78,10 @@ $presentations = $talks;
 
 
 $chairs_ = [
-    '2017-06-29T09:00:00' => "U. Schreiber",
-    '2017-06-29T14:00:00' => "L. Cacciapuoti",
-    '2017-06-30T08:30:00' => "P. Wolf",
-    '2017-06-30T14:00:00' => "Ch. Salomon",
+    '2017-06-29T08:59:00' => "U. Schreiber",
+    '2017-06-29T13:59:00' => "L. Cacciapuoti",
+    '2017-06-30T08:29:00' => "P. Wolf",
+    '2017-06-30T13:59:00' => "Ch. Salomon",
 ];
 $chairs = [];
 foreach($chairs_ as $date =>$chair) {
@@ -90,7 +90,7 @@ foreach($chairs_ as $date =>$chair) {
 
 
 $breaks_list = [
-    ['Coffee Break', '2017-06-29T11:00:00', '2017-06-29T11:30:00', ''],
+    ['Coffee Break', '2017-06-29T10:30:00', '2017-06-29T11:00:00', ''],
     ['Coffee Break', '2017-06-29T16:00:00', '2017-06-29T16:30:00', ''],
     ['Coffee Break', '2017-06-30T10:30:00', '2017-06-30T11:00:00', ''],
     ['Coffee Break', '2017-06-30T15:20:00', '2017-06-30T15:40:00', ''],

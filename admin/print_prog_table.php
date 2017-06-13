@@ -150,6 +150,7 @@ EOT;
 
         defaultDate: '2017-06-29',
         defaultView: 'agendaWeek',
+        hiddenDays: [ 0,1,2,3 ],
         editable: false,
 
         header: {

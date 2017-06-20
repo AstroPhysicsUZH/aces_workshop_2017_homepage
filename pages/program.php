@@ -116,6 +116,12 @@ EOT;
 
 
 <h1>Programme</h1>
+<p>
+    We are happy to announce the final program. Please note that small last minute changes might still be possible, this page however will always represent the latest version.
+</p>
+<p>
+    All the talks will take place in <b>Zurich at University Irchel, in lecture room Y15-G-20</b>. You can find <a href="?page=transportation">directions here</a>.
+</p>
 
 <h2>Final Program - List</h2>
 <div class='speakers_abstracts'>

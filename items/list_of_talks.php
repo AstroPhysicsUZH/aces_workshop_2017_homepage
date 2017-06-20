@@ -25,7 +25,7 @@ $fmt = 'H:i';
 $cur = NULL;
 $cid = 0;
 
-$all = array_merge($presentations, $breaks);
+$all = array_merge($presentations, $breaks, $specialevents);
 
 function cmp($a, $b) {
     $fmt = 'Y-m-d\TH:i:s';
@@ -60,9 +60,15 @@ foreach($all as $p) {
         <span class='time'>{$p->start->format($fmt)} &ndash; {$p->end->format($fmt)}:</span>
 
 EOT;
-    if (isset($p->is_no_talk) && $p->is_no_talk) {
+    if (isset($p->is_break) && $p->is_break) {
         print <<<EOT
         <span class="notalk">{$p->name}</span>
+
+EOT;
+    }
+    elseif (isset($p->is_special) && $p->is_special) {
+        print <<<EOT
+        <span class="author">{$p->name}</span>
 
 EOT;
     }

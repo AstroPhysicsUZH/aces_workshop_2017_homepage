@@ -150,7 +150,7 @@ $tableFields = array(
 #    'isImpaired' => ['INTEGER', 'boolean'],
 #    'lookingForRoomMate' => ['INTEGER', 'boolean'],
 
-#    'price' => ['INTEGER', 'integer'],
+    'price' => ['INTEGER', 'integer'],
 #    'hasPayed' => ['INTEGER', 'boolean'],
 #    'amountPayed' => ['INTEGER', 'integer'],
 #    'paymentDate' => ['INTEGER', 'date'],

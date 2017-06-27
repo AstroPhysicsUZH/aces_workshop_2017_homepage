@@ -50,7 +50,7 @@ foreach($all as $p) {
     }
     #print "<!--  " . $day . "  " . $cur . "-->\n";
     if (count($chairs) > $cid && $p->start > $chairs[$cid]['date']) {
-        print "<h4 class='chair'>Chairperson: " . $chairs[$cid]['chair'] . "</h4>";
+        print "<h4 class='chair'>Chair: " . $chairs[$cid]['chair'] . "</h4>";
         $cid += 1;
     }
 

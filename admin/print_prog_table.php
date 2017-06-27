@@ -64,7 +64,7 @@ h3.chair {
 
 </head>
 <body>
-    <h1>Programme</h1>
+    <h1>Program</h1>
     <div id='calendar'></div>
 
 <script>
@@ -84,7 +84,7 @@ $(document).ready(function() {
 EOT;
     }
 ?>
-    ], color: '#ffff88', textColor: 'black' , borderColor:'#aaaa00' };
+    ], color: '#ff6', textColor: 'black' , borderColor:'#aa0' };
 
     // Enter recurring breaks here (PHP code following)
     var evtSrcsBrks = { events: [
@@ -99,7 +99,7 @@ EOT;
 EOT;
     }
     ?>
-], color: '#88ff88', textColor: 'black', borderColor:'#000088'};
+], color: '#fff', textColor: 'black', borderColor:'#fff'};
 
     // Enter Plenary Talks
     var evtSrcsCTalks = { events: [
@@ -119,7 +119,7 @@ EOT;
     }
     ?>
 
-    ], color:'#ff8888', textColor:'black', borderColor:'#008800' };
+], color:'#9f9', textColor:'black', borderColor:'#080' };
 
     // Enter Parallelsessions
     var evtSrcsPTalks = { events: [
@@ -164,7 +164,7 @@ EOT;
                 scrollTime: '08:00:00',
                 slotLabelFormat: 'H:mm',
                 minTime: "08:00:00",
-                maxTime: "20:30:00",
+                maxTime: "20:00:00",
                 columnFormat: "ddd D",
                 slotDuration: '00:20:00'
             }

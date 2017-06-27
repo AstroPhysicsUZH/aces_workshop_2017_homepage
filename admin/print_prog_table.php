@@ -64,7 +64,7 @@ h3.chair {
 
 </head>
 <body>
-    <h1>Program</h1>
+    <h1>Program &mdash; Agenda</h1>
     <div id='calendar'></div>
 
 <script>

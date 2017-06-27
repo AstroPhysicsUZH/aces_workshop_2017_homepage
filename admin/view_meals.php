@@ -63,8 +63,12 @@ function print_line($p){
         </tr>
 
 <?php
-
+$n = 0;
+$NM = 0;
+$NV = 0;
+$NP = 0;
 foreach ($meals as $M) {
+    $n += 1;
     $pid = sprintf("%03u", $M->id);
     $aff = "";
     $email = "";
@@ -73,6 +77,11 @@ foreach ($meals as $M) {
     $nVegg = (int)$M->nVeggies;
     $nMeat = $npers - $nVegg;
     if (array_key_exists('email', $M)) {$email = $M->email;}
+    $NM += $nMeat;
+    $NV += $nVegg;
+    $NP += $price;
+
+
 
     print "<tr>";
     print "<td><code>[{$pid}]</code></td>";
@@ -93,7 +102,15 @@ foreach ($meals as $M) {
 
 }
 
+print "<tr>";
+print "<td></td>";
+print "<td>TOTAL</td>";
+print "<td>TOTAL</td>";
+print "<td style='text-align:center'>{$NM}</td>";
+print "<td style='text-align:center'>{$NV}</td>";
+print "<td style='text-align:right'>{$NP}</td>";
 ?>
+
 </table>
 
 </body></html>

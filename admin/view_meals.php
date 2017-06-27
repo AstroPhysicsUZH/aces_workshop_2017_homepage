@@ -7,7 +7,7 @@ require_once "../lib/app.php";
 
 $stmtstr = "SELECT
                 id, title, firstname, lastname, email, affiliation,
-                nPersons, nVeggies
+                nPersons, nVeggies, price
             FROM {$tableName}
             ORDER BY lastname ASC;" ;
 
@@ -60,8 +60,6 @@ function print_line($p){
             <th># Meat</th>
             <th># Veggies</th>
             <th>Price</th>
-            <th></th>
-            <th></th>
         </tr>
 
 <?php
@@ -83,8 +81,6 @@ foreach ($meals as $M) {
     print "<td style='text-align:center'>{$nMeat}</td>";
     print "<td style='text-align:center'>{$nVegg}</td>";
     print "<td style='text-align:right'>{$price}</td>";
-    print "<td></td>";
-    print "<td></td>";
 
     print "</tr>";
 

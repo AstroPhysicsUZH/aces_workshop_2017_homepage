@@ -1,7 +1,7 @@
 
 <h1>Committees</h1>
 
-<h2>Executive committee (provisional)</h2>
+<h2>Executive committee</h2>
 <?php
     $news = csv_to_array('pages/data/science_advisory_committee.csv');
     // sort by date, newest on top

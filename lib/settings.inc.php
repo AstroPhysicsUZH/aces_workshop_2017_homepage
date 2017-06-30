@@ -35,7 +35,8 @@ $date_fstr = 'Y-m-d';               // how to present dates only
 $PAGES = array(
 #   id and php filename     title
     array('home',          'home'),
-    array('program',       'programme'),
+    array('program',       'program'),
+    array('slides',        'slides'),
     array('committees',    'committees'),
     array('registration',  'registration'),
     array('participants',  'participants'),
